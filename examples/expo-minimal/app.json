@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "name": "PocketBomb shop",
+    "slug": "pocketbomb-expo-minimal",
+    "scheme": "pocketbombshop",
+    "version": "0.0.0"
+  }
+}

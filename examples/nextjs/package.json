@@ -1,0 +1,28 @@
+{
+  "name": "@pocketbomb/example-nextjs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Next.js App Router example: server components with the private storefront client + buyer IP, client components with the public client, customer login route handlers.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node tests/smoke.ts"
+  },
+  "dependencies": {
+    "@pocketbomb/dynamite": "workspace:^",
+    "@pocketbomb/primer": "workspace:^",
+    "next": "^16.0.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@pocketbomb/fuse": "workspace:^",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.0",
+    "@types/react-dom": "~19.2.0",
+    "typescript": "catalog:"
+  }
+}

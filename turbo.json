@@ -1,0 +1,47 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "stream",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**", ".next/**", "!.next/cache/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build", "build"]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": [
+        "POCKETBOMB_BIN",
+        "POCKETBOMB_SRC",
+        "POCKETBOMB_FUSE_CACHE",
+        "POCKETBOMB_FUSE_KEEP"
+      ]
+    },
+    "smoke": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "passThroughEnv": [
+        "POCKETBOMB_BIN",
+        "POCKETBOMB_SRC",
+        "POCKETBOMB_FUSE_CACHE",
+        "POCKETBOMB_FUSE_KEEP",
+        "POCKETBOMB_URL"
+      ]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": [
+        "POCKETBOMB_BIN",
+        "POCKETBOMB_SRC",
+        "POCKETBOMB_FUSE_CACHE",
+        "POCKETBOMB_FUSE_KEEP"
+      ]
+    }
+  }
+}

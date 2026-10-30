@@ -1,0 +1,14 @@
+packages:
+  - packages/*
+  - examples/*
+  - templates/*
+catalog:
+  typescript: ^5.9.3
+  vitest: ^4.1.12
+  tsdown: ^0.23.4
+  vite: ^8.3.5
+minimumReleaseAgeExclude:
+  - tsdown@0.23.4
+allowBuilds:
+  # the platform binary comes from the optional dependency (the postinstall only verifies it)
+  esbuild: false

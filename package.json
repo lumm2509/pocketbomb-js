@@ -1,0 +1,40 @@
+{
+  "name": "pocketbomb-js",
+  "version": "0.0.0",
+  "private": true,
+  "description": "PocketBomb JavaScript SDKs (primer, dynamite) monorepo.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.ts",
+    "build:all": "node scripts/build.ts --all",
+    "typecheck": "turbo run typecheck && tsc -p scripts/tsconfig.json",
+    "lint": "oxlint --max-warnings=0 packages/ examples/ templates/ scripts/",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "turbo run test --filter='./packages/*'",
+    "test:integration": "POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} turbo run test:integration",
+    "test:exports": "node scripts/check-exports.ts",
+    "examples": "turbo run build typecheck --filter='./examples/*' && POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} pnpm --filter @pocketbomb/example-core run smoke && POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} pnpm --filter @pocketbomb/example-expo-minimal run smoke && POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} pnpm --filter @pocketbomb/example-nextjs run smoke",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test",
+    "changeset": "changeset",
+    "version-packages": "node scripts/release.ts version",
+    "release": "node scripts/release.ts publish",
+    "test:e2e": "POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} turbo run test:e2e",
+    "codegen": "POCKETBOMB_SRC=${POCKETBOMB_SRC:-$PWD/../pocketbase} pnpm --filter @pocketbomb/template-storefront-react-router run codegen"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@pocketbomb/fuse": "workspace:*",
+    "@pocketbomb/primer": "workspace:*",
+    "@types/node": "^24.0.0",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
+    "turbo": "^2.11.10",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "packageManager": "pnpm@11.9.0"
+}

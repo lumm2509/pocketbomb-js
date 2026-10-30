@@ -1,4 +1,4 @@
-// @pocketbomb/detonator/react
+// pocketbomb-detonator/react
 //
 // The React context of a launched application page (like the Shopify AppProvider): the staff member,
 // the installation, the launched extension and record, provided from the loader data. SSR-safe.

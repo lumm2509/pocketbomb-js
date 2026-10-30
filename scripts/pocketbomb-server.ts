@@ -1,4 +1,4 @@
-// Starts a local PocketBomb server with fuse (@pocketbomb/fuse) for the monorepo
+// Starts a local PocketBomb server with fuse (pocketbomb-fuse) for the monorepo
 // (the integration suite and the examples smoke runs).
 //
 // CLI:
@@ -13,7 +13,7 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { startFuse, type FuseOptions } from "@pocketbomb/fuse/node";
+import { startFuse, type FuseOptions } from "pocketbomb-fuse/node";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 

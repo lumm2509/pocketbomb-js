@@ -1,4 +1,4 @@
-import { CookieAuthStore } from "@pocketbomb/primer";
+import { CookieAuthStore } from "pocketbomb-primer";
 import { assert, describe, test, vi } from "vitest";
 import { dummyJWT } from "../test-utils";
 import { DEFAULT_BUYER_IP_HEADERS, getBuyerIp } from "./buyer-ip";

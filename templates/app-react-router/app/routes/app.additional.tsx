@@ -1,4 +1,4 @@
-import { useApp } from "@pocketbomb/detonator/react";
+import { useApp } from "pocketbomb-detonator/react";
 
 export default function Additional() {
   const app = useApp();

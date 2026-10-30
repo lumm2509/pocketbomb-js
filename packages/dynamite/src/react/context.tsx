@@ -1,4 +1,4 @@
-import type { AccountCallbackResult, AccountLoginOptions, AuthRecord } from "@pocketbomb/primer";
+import type { AccountCallbackResult, AccountLoginOptions, AuthRecord } from "pocketbomb-primer";
 import { createContext, useContext, useMemo, type ReactNode } from "react";
 import { createStorefrontClient, type StorefrontClient } from "../client/storefront";
 import {

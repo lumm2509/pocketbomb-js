@@ -1,4 +1,4 @@
-import { flattenConnection } from "@pocketbomb/dynamite";
+import { flattenConnection } from "pocketbomb-dynamite";
 import { headers } from "next/headers";
 import { ProductSearch } from "../components/ProductSearch";
 import { requestContext, storefront } from "../lib/pocketbomb.server";

@@ -1,4 +1,4 @@
-import { AuthStore, MemoryLoginSession } from "@pocketbomb/primer";
+import { AuthStore, MemoryLoginSession } from "pocketbomb-primer";
 import { assert, describe, expect, test } from "vitest";
 import { createRequestContext } from "../core/request-context";
 import { gql } from "../graphql/graphql";

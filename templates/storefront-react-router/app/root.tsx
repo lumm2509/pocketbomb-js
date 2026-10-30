@@ -1,4 +1,4 @@
-import { DynamiteProvider } from "@pocketbomb/dynamite/react";
+import { DynamiteProvider } from "pocketbomb-dynamite/react";
 import {
   isRouteErrorResponse,
   Link,

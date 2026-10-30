@@ -1,5 +1,5 @@
 import { reactRouter } from "@react-router/dev/vite";
-import { dynamite } from "@pocketbomb/dynamite/vite";
+import { dynamite } from "pocketbomb-dynamite/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({

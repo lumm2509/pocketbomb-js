@@ -6,8 +6,8 @@ import {
   MemoryCache,
   type IncomingRequest,
   type RequestContext,
-} from "@pocketbomb/dynamite";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
+} from "pocketbomb-dynamite";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
 
 const cache = new MemoryCache();
 

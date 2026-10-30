@@ -3,8 +3,8 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterAll, assert, beforeAll, describe, expect, test } from "vitest";
-import { signInStaff, startFuse, type Fuse } from "@pocketbomb/fuse/node";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+import { signInStaff, startFuse, type Fuse } from "pocketbomb-fuse/node";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 import { run } from "../src/cli/index";
 import { fuseOptions } from "./helpers";
 

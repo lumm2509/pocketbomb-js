@@ -1,5 +1,5 @@
 // The fuse seed of `detonator dev`: the "orders" collection of the manifest scopes and a few orders.
-import type { FuseSeedContext } from "@pocketbomb/fuse/node";
+import type { FuseSeedContext } from "pocketbomb-fuse/node";
 
 export default async function seed(context: FuseSeedContext): Promise<Record<string, string>> {
   const pb = await context.signInOwner();

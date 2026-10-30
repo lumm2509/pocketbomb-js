@@ -1,6 +1,6 @@
 "use client";
 
-import { useCustomer } from "@pocketbomb/dynamite/react";
+import { useCustomer } from "pocketbomb-dynamite/react";
 
 export function AccountButton() {
   const { customer, isLoggedIn, login } = useCustomer();

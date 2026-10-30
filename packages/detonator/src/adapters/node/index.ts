@@ -1,4 +1,4 @@
-// @pocketbomb/detonator/adapters/node
+// pocketbomb-detonator/adapters/node
 //
 // Node.js http adapter: converts the IncomingMessage to a Fetch Request and writes a Fetch Response
 // (the detonator server toolkit works with the Fetch API on every runtime).

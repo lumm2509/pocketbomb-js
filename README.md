@@ -4,10 +4,10 @@ The JavaScript packages of [PocketBomb](https://github.com/lumm2509/pocketbomb) 
 
 | Package | What |
 |---|---|
-| [`@pocketbomb/primer`](packages/primer) | The transport shared by every package and by the PocketBomb dashboard: API keys/tokens headers, errors, auth stores (memory, localStorage, cookie, AsyncStorage-like), the OAuth2 account strategy (PKCE, refresh rotation with a cross-tab lock, logout, `openAuthSession` for mobile), records REST, GraphQL, realtime, file URLs. Browser, Node.js, edge and React Native; no runtime dependencies. |
-| [`@pocketbomb/dynamite`](packages/dynamite) | The storefront framework: `createRequestContext` (buyer IP, httpOnly cookie session, cache), `createStorefrontClient` (public key or private key + buyer IP), `createCustomerAccountClient` (SSR, browser and mobile), gql.tada `graphql()` documents, `./react`, `./vite`, `./ts-plugin` and the `dynamite` CLI (codegen, dev, info). |
-| [`@pocketbomb/detonator`](packages/detonator) | The PocketBomb Applications framework: install/uninstall notifications (issuer JWKS), managed webhooks (HMAC), dashboard extension launches (online staff sessions), offline admin clients, Memory/`node:sqlite` session storages, `./react`, `./adapters/node` and the `detonator` CLI (dev, deploy, info). |
-| [`@pocketbomb/fuse`](packages/fuse) | The local dev runtime: builds/locates and runs the PocketBomb server with a temporary data dir, the Owner and a seed (`./node`, `./vite`). |
+| [`pocketbomb-primer`](packages/primer) | The transport shared by every package and by the PocketBomb dashboard: API keys/tokens headers, errors, auth stores (memory, localStorage, cookie, AsyncStorage-like), the OAuth2 account strategy (PKCE, refresh rotation with a cross-tab lock, logout, `openAuthSession` for mobile), records REST, GraphQL, realtime, file URLs. Browser, Node.js, edge and React Native; no runtime dependencies. |
+| [`pocketbomb-dynamite`](packages/dynamite) | The storefront framework: `createRequestContext` (buyer IP, httpOnly cookie session, cache), `createStorefrontClient` (public key or private key + buyer IP), `createCustomerAccountClient` (SSR, browser and mobile), gql.tada `graphql()` documents, `./react`, `./vite`, `./ts-plugin` and the `dynamite` CLI (codegen, dev, info). |
+| [`pocketbomb-detonator`](packages/detonator) | The PocketBomb Applications framework: install/uninstall notifications (issuer JWKS), managed webhooks (HMAC), dashboard extension launches (online staff sessions), offline admin clients, Memory/`node:sqlite` session storages, `./react`, `./adapters/node` and the `detonator` CLI (dev, deploy, info). |
+| [`pocketbomb-fuse`](packages/fuse) | The local dev runtime: builds/locates and runs the PocketBomb server with a temporary data dir, the Owner and a seed (`./node`, `./vite`). |
 
 The PocketBomb API surfaces (Shopify mental model):
 
@@ -16,17 +16,17 @@ The PocketBomb API surfaces (Shopify mental model):
 - **Customer Account**: the hosted OAuth2/OIDC pages of an auth collection (login, signup, refresh rotation,
   logout, userinfo, consents, own sessions).
 - **Applications** (the Admin API counterpart): the installations of an application get offline client credentials
-  and online staff tokens (extension launches) on the existing server APIs: `@pocketbomb/detonator`.
-- The dashboard internals live in `@pocketbomb/primer/internal` (used by the dashboard only, not a public API).
+  and online staff tokens (extension launches) on the existing server APIs: `pocketbomb-detonator`.
+- The dashboard internals live in `pocketbomb-primer/internal` (used by the dashboard only, not a public API).
 
 ## Layout
 
 ```
-packages/primer        @pocketbomb/primer (src/{auth,records,realtime,files,services,tools,internal})
-packages/dynamite      @pocketbomb/dynamite (src/{core,client,customer-account,graphql})
+packages/primer        pocketbomb-primer (src/{auth,records,realtime,files,services,tools,internal})
+packages/dynamite      pocketbomb-dynamite (src/{core,client,customer-account,graphql})
 packages/integration   integration suite against a real PocketBomb server (private)
-packages/fuse          @pocketbomb/fuse (src/{node,vite})
-packages/detonator     @pocketbomb/detonator (src/{server,session-storage,react,adapters/node,cli})
+packages/fuse          pocketbomb-fuse (src/{node,vite})
+packages/detonator     pocketbomb-detonator (src/{server,session-storage,react,adapters/node,cli})
 templates/storefront-react-router  React Router v7 SSR storefront starter (Playwright smoke)
 templates/app-react-router         PocketBomb application starter (pocketbomb.app.toml; Playwright smoke)
 examples/core          vanilla TS: browser page (vite) + Node.js script

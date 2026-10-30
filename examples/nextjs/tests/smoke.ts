@@ -8,7 +8,7 @@ import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { CookieJar, followHostedFlow, freePort, startFuse, type Fuse } from "@pocketbomb/fuse/node";
+import { CookieJar, followHostedFlow, freePort, startFuse, type Fuse } from "pocketbomb-fuse/node";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const next = path.join(root, "node_modules", ".bin", "next");
@@ -63,7 +63,7 @@ try {
 
   // the fixtures client registers http://localhost:5173 only: add this app origin
   const owner = await (
-    await import("@pocketbomb/fuse/node")
+    await import("pocketbomb-fuse/node")
   ).signInStaff(fuse.url, fuse.owner.email, fuse.owner.password);
   const client = await owner.oauth2Clients.getFirstListItem(
     owner.filter("clientId = {:id}", { id: fuse.env.POCKETBOMB_CLIENT_ID }),

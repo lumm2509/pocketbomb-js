@@ -1,4 +1,4 @@
-import { Client } from "@pocketbomb/primer";
+import { Client } from "pocketbomb-primer";
 import { assert, describe, expect, expectTypeOf, test } from "vitest";
 import { mockFetch } from "../test-utils";
 import {

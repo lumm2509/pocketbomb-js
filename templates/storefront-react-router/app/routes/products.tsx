@@ -1,4 +1,4 @@
-import { getPaginationVariables, Pagination } from "@pocketbomb/dynamite/react";
+import { getPaginationVariables, Pagination } from "pocketbomb-dynamite/react";
 import { useLocation } from "react-router";
 import { ProductCard } from "../components/ProductCard";
 import { PRODUCTS_PAGE } from "../lib/queries";

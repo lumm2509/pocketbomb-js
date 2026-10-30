@@ -1,8 +1,8 @@
 // Ported from the P1-dropped applications integration spec of the enriched JS SDK.
 import { describe, assert, expect, test, beforeAll, afterAll } from "vitest";
-import { Client } from "@pocketbomb/primer";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
-import { signInStaff, startFuse, type Fuse } from "@pocketbomb/fuse/node";
+import { Client } from "pocketbomb-primer";
+import type { DashboardClient } from "pocketbomb-primer/internal";
+import { signInStaff, startFuse, type Fuse } from "pocketbomb-fuse/node";
 import {
   ApplicationLaunchTokenType,
   createAdminClient,

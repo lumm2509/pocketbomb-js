@@ -1,4 +1,4 @@
-// Smoke test of the dynamite TypeScript plugin (@pocketbomb/dynamite/ts-plugin, configured in
+// Smoke test of the dynamite TypeScript plugin (pocketbomb-dynamite/ts-plugin, configured in
 // tsconfig.json): a real tsserver returns GraphQL completions and diagnostics for the
 // `graphql()` documents of the template (from the codegen schema .dynamite/schema.graphql).
 //
@@ -21,7 +21,7 @@ function assert(condition: unknown, message: string): asserts condition {
 
 // a document of the template app opened in the editor (written for the test, removed after)
 const probeFile = path.join(root, "tests/ts-plugin-probe.generated.ts");
-const probe = `import { graphql } from "@pocketbomb/dynamite/graphql";
+const probe = `import { graphql } from "pocketbomb-dynamite/graphql";
 
 export const COMPLETE = graphql(\`
   query Complete {

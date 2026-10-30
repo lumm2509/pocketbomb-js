@@ -2,7 +2,7 @@ import { defineConfig } from "tsdown";
 
 // ESM (.js + .d.ts) and CJS (.cjs + .d.cts) builds of the fuse entries (Node.js only).
 // The output is unbundled (one file per module) so that the entries share the same modules;
-// @pocketbomb/primer and vite are external.
+// pocketbomb-primer and vite are external.
 export default defineConfig({
   entry: ["src/node/index.ts", "src/vite/index.ts"],
   format: ["esm", "cjs"],

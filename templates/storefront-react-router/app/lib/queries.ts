@@ -1,5 +1,5 @@
 // The storefront GraphQL documents (typed by gql.tada from the codegen schema).
-import { graphql } from "@pocketbomb/dynamite/graphql";
+import { graphql } from "pocketbomb-dynamite/graphql";
 
 export const PRODUCT_CARD = graphql(`
   fragment ProductCard on Product {

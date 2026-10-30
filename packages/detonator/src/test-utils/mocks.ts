@@ -1,4 +1,4 @@
-import { ClientResponseError } from "@pocketbomb/primer";
+import { ClientResponseError } from "pocketbomb-primer";
 
 export type RequestMock = {
   method?: string;

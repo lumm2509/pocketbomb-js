@@ -1,4 +1,4 @@
-// @pocketbomb/detonator
+// pocketbomb-detonator
 //
 // The runtime agnostic (WebCrypto) building blocks of the PocketBomb applications: the install/launch
 // JWT verification (issuer JWKS), the managed webhooks HMAC verification and the admin clients.

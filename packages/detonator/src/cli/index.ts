@@ -100,7 +100,7 @@ export async function dev(options: DevOptions = {}): Promise<DevState> {
   const envFile = path.resolve(cwd, options.envFile || ".env");
   const entry = path.resolve(cwd, options.entry || "server.ts");
 
-  const { freePort, signInStaff, startFuse } = await import("@pocketbomb/fuse/node");
+  const { freePort, signInStaff, startFuse } = await import("pocketbomb-fuse/node");
 
   const port = options.port || (await freePort("localhost"));
   const appUrl = "http://localhost:" + port;
@@ -292,7 +292,7 @@ function runInfo(argv: Array<string>, io: Io): number {
   const { values } = parseArgs({ args: argv, options: { config: { type: "string" } } });
   const file = path.resolve(values.config || "pocketbomb.app.toml");
 
-  io.log("@pocketbomb/detonator " + readPackageVersion());
+  io.log("pocketbomb-detonator " + readPackageVersion());
   io.log("node " + process.version);
 
   let manifest: AppManifest;

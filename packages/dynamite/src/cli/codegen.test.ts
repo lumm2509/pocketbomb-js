@@ -116,7 +116,7 @@ describe("codegen", function () {
     const env = introspectionToEnv(introspection);
     assert.include(env, "export type introspection = {");
     assert.include(env, "'Product': { kind: 'OBJECT'; name: 'Product';");
-    assert.include(env, 'declare module "@pocketbomb/dynamite/graphql"');
+    assert.include(env, 'declare module "pocketbomb-dynamite/graphql"');
     assert.include(env, "interface PocketBombSchema");
   });
 
@@ -158,7 +158,7 @@ describe("codegen", function () {
 
     fs.writeFileSync(
       path.join(cwd, "app.ts"),
-      `import { graphql, type ResultOf, type VariablesOf } from "@pocketbomb/dynamite/graphql";
+      `import { graphql, type ResultOf, type VariablesOf } from "pocketbomb-dynamite/graphql";
 
 const PRODUCTS = graphql(\`
   query Products($first: Int) {

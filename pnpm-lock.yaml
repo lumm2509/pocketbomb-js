@@ -26,12 +26,6 @@ importers:
       '@changesets/cli':
         specifier: ^3.0.3
         version: 3.0.3
-      '@pocketbomb/fuse':
-        specifier: workspace:*
-        version: link:packages/fuse
-      '@pocketbomb/primer':
-        specifier: workspace:*
-        version: link:packages/primer
       '@types/node':
         specifier: ^24.0.0
         version: 24.19.2
@@ -41,6 +35,12 @@ importers:
       oxlint:
         specifier: ^1.90.0
         version: 1.90.0
+      pocketbomb-fuse:
+        specifier: workspace:*
+        version: link:packages/fuse
+      pocketbomb-primer:
+        specifier: workspace:*
+        version: link:packages/primer
       turbo:
         specifier: ^2.11.10
         version: 2.11.10
@@ -50,10 +50,10 @@ importers:
 
   examples/core:
     dependencies:
-      '@pocketbomb/dynamite':
+      pocketbomb-dynamite:
         specifier: workspace:^
         version: link:../../packages/dynamite
-      '@pocketbomb/primer':
+      pocketbomb-primer:
         specifier: workspace:^
         version: link:../../packages/primer
     devDependencies:
@@ -69,12 +69,6 @@ importers:
 
   examples/expo-minimal:
     dependencies:
-      '@pocketbomb/dynamite':
-        specifier: workspace:^
-        version: link:../../packages/dynamite
-      '@pocketbomb/primer':
-        specifier: workspace:^
-        version: link:../../packages/primer
       '@react-native-async-storage/async-storage':
         specifier: 2.2.0
         version: 2.2.0(react-native@0.86.3(@babel/core@7.29.7)(@types/react@19.2.18)(react@19.2.3))
@@ -84,6 +78,12 @@ importers:
       expo-web-browser:
         specifier: ~57.0.3
         version: 57.0.3(expo@57.0.31)(react-native@0.86.3(@babel/core@7.29.7)(@types/react@19.2.18)(react@19.2.3))
+      pocketbomb-dynamite:
+        specifier: workspace:^
+        version: link:../../packages/dynamite
+      pocketbomb-primer:
+        specifier: workspace:^
+        version: link:../../packages/primer
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -91,30 +91,30 @@ importers:
         specifier: 0.86.3
         version: 0.86.3(@babel/core@7.29.7)(@types/react@19.2.18)(react@19.2.3)
     devDependencies:
-      '@pocketbomb/fuse':
-        specifier: workspace:^
-        version: link:../../packages/fuse
       '@types/node':
         specifier: ^24.0.0
         version: 24.19.2
       '@types/react':
         specifier: ~19.2.0
         version: 19.2.18
+      pocketbomb-fuse:
+        specifier: workspace:^
+        version: link:../../packages/fuse
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
 
   examples/nextjs:
     dependencies:
-      '@pocketbomb/dynamite':
-        specifier: workspace:^
-        version: link:../../packages/dynamite
-      '@pocketbomb/primer':
-        specifier: workspace:^
-        version: link:../../packages/primer
       next:
         specifier: ^16.0.0
         version: 16.4.3(@types/node@24.19.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      pocketbomb-dynamite:
+        specifier: workspace:^
+        version: link:../../packages/dynamite
+      pocketbomb-primer:
+        specifier: workspace:^
+        version: link:../../packages/primer
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -122,9 +122,6 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
     devDependencies:
-      '@pocketbomb/fuse':
-        specifier: workspace:^
-        version: link:../../packages/fuse
       '@types/node':
         specifier: ^24.0.0
         version: 24.19.2
@@ -134,6 +131,9 @@ importers:
       '@types/react-dom':
         specifier: ~19.2.0
         version: 19.2.7(@types/react@19.2.18)
+      pocketbomb-fuse:
+        specifier: workspace:^
+        version: link:../../packages/fuse
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -155,13 +155,13 @@ importers:
 
   packages/detonator:
     dependencies:
-      '@pocketbomb/detcord':
+      pocketbomb-detcord:
         specifier: workspace:^
         version: link:../detcord
-      '@pocketbomb/fuse':
+      pocketbomb-fuse:
         specifier: workspace:^
         version: link:../fuse
-      '@pocketbomb/primer':
+      pocketbomb-primer:
         specifier: workspace:^
         version: link:../primer
       smol-toml:
@@ -207,18 +207,18 @@ importers:
       '@gql.tada/internal':
         specifier: 1.2.2
         version: 1.2.2(graphql@16.14.2)(typescript@5.9.3)
-      '@pocketbomb/fuse':
-        specifier: workspace:^
-        version: link:../fuse
-      '@pocketbomb/primer':
-        specifier: workspace:^
-        version: link:../primer
       gql.tada:
         specifier: ^1.11.4
         version: 1.11.4(graphql@16.14.2)(typescript@5.9.3)
       graphql:
         specifier: ^16.11.0
         version: 16.14.2
+      pocketbomb-fuse:
+        specifier: workspace:^
+        version: link:../fuse
+      pocketbomb-primer:
+        specifier: workspace:^
+        version: link:../primer
     devDependencies:
       '@types/node':
         specifier: ^24.0.0
@@ -253,7 +253,7 @@ importers:
 
   packages/fuse:
     dependencies:
-      '@pocketbomb/primer':
+      pocketbomb-primer:
         specifier: workspace:^
         version: link:../primer
     devDependencies:
@@ -275,13 +275,13 @@ importers:
 
   packages/integration:
     dependencies:
-      '@pocketbomb/dynamite':
+      pocketbomb-dynamite:
         specifier: workspace:^
         version: link:../dynamite
-      '@pocketbomb/fuse':
+      pocketbomb-fuse:
         specifier: workspace:^
         version: link:../fuse
-      '@pocketbomb/primer':
+      pocketbomb-primer:
         specifier: workspace:^
         version: link:../primer
     devDependencies:
@@ -312,15 +312,6 @@ importers:
 
   templates/app-react-router:
     dependencies:
-      '@pocketbomb/detcord':
-        specifier: workspace:^
-        version: link:../../packages/detcord
-      '@pocketbomb/detonator':
-        specifier: workspace:^
-        version: link:../../packages/detonator
-      '@pocketbomb/primer':
-        specifier: workspace:^
-        version: link:../../packages/primer
       '@react-router/fs-routes':
         specifier: ^7.18.0
         version: 7.18.5(@react-router/dev@7.18.5(@types/node@24.19.2)(lightningcss@1.33.0)(react-router@7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.51.2)(typescript@5.9.3)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(terser@5.51.2)(yaml@2.9.1))(yaml@2.9.1))(typescript@5.9.3)
@@ -330,6 +321,15 @@ importers:
       isbot:
         specifier: ^5.1.0
         version: 5.2.2
+      pocketbomb-detcord:
+        specifier: workspace:^
+        version: link:../../packages/detcord
+      pocketbomb-detonator:
+        specifier: workspace:^
+        version: link:../../packages/detonator
+      pocketbomb-primer:
+        specifier: workspace:^
+        version: link:../../packages/primer
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -340,9 +340,6 @@ importers:
         specifier: ^7.18.0
         version: 7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
-      '@pocketbomb/fuse':
-        specifier: workspace:^
-        version: link:../../packages/fuse
       '@react-router/dev':
         specifier: ^7.18.0
         version: 7.18.5(@types/node@24.19.2)(lightningcss@1.33.0)(react-router@7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.51.2)(typescript@5.9.3)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(terser@5.51.2)(yaml@2.9.1))(yaml@2.9.1)
@@ -358,6 +355,9 @@ importers:
       playwright:
         specifier: 1.63.0
         version: 1.63.0
+      pocketbomb-fuse:
+        specifier: workspace:^
+        version: link:../../packages/fuse
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -367,18 +367,18 @@ importers:
 
   templates/storefront-react-router:
     dependencies:
-      '@pocketbomb/dynamite':
-        specifier: workspace:^
-        version: link:../../packages/dynamite
-      '@pocketbomb/primer':
-        specifier: workspace:^
-        version: link:../../packages/primer
       '@react-router/node':
         specifier: ^7.18.0
         version: 7.18.5(react-router@7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3)
       isbot:
         specifier: ^5.1.0
         version: 5.2.2
+      pocketbomb-dynamite:
+        specifier: workspace:^
+        version: link:../../packages/dynamite
+      pocketbomb-primer:
+        specifier: workspace:^
+        version: link:../../packages/primer
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -389,9 +389,6 @@ importers:
         specifier: ^7.18.0
         version: 7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
-      '@pocketbomb/fuse':
-        specifier: workspace:^
-        version: link:../../packages/fuse
       '@react-router/dev':
         specifier: ^7.18.0
         version: 7.18.5(@types/node@24.19.2)(lightningcss@1.33.0)(react-router@7.18.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.51.2)(typescript@5.9.3)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(terser@5.51.2)(yaml@2.9.1))(yaml@2.9.1)
@@ -407,6 +404,9 @@ importers:
       playwright:
         specifier: 1.63.0
         version: 1.63.0
+      pocketbomb-fuse:
+        specifier: workspace:^
+        version: link:../../packages/fuse
       typescript:
         specifier: 'catalog:'
         version: 5.9.3

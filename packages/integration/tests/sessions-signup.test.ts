@@ -1,6 +1,6 @@
 import { describe, assert, expect, test, beforeAll, inject } from "vitest";
-import { AuthStore, createAccountClient, getTokenPayload } from "@pocketbomb/primer";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+import { AuthStore, createAccountClient, getTokenPayload } from "pocketbomb-primer";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 import {
   CookieJar,
   followHostedFlow,

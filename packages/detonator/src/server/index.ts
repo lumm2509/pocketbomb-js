@@ -1,4 +1,4 @@
-// @pocketbomb/detonator/server
+// pocketbomb-detonator/server
 //
 // The PocketBomb Applications server toolkit (like @shopify/shopify-app-react-router/server).
 

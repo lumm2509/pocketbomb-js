@@ -1,13 +1,13 @@
 // The app PocketBomb setup, without React Native imports so that it also runs in Node.js
 // (see src/smoke.ts): the storage and the in-app auth session are injected adapters.
-import { createStorefrontClient, flattenConnection, gql } from "@pocketbomb/dynamite";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
+import { createStorefrontClient, flattenConnection, gql } from "pocketbomb-dynamite";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
 import {
   AsyncAuthStore,
   MemoryLoginSession,
   type AsyncKeyValueStorage,
   type OpenAuthSession,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 
 export interface ShopConfig {
   url: string;

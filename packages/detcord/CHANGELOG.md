@@ -1,4 +1,4 @@
-# @pocketbomb/detcord
+# pocketbomb-detcord
 
 ## 0.2.0
 

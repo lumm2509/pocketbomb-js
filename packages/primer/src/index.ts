@@ -1,4 +1,4 @@
-// @pocketbomb/primer
+// pocketbomb-primer
 //
 // The PocketBomb transport shared by every PocketBomb package (browser, Node.js, edge, React Native):
 // API keys/tokens headers, errors, auth stores, the OAuth2 account strategy,

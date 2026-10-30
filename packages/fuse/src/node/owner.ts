@@ -1,5 +1,5 @@
-import { AuthStore } from "@pocketbomb/primer";
-import { createDashboardClient, type DashboardClient } from "@pocketbomb/primer/internal";
+import { AuthStore } from "pocketbomb-primer";
+import { createDashboardClient, type DashboardClient } from "pocketbomb-primer/internal";
 import { followHostedFlow } from "./hosted-flow";
 
 /**

@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import type { Fuse } from "@pocketbomb/fuse/node";
+import type { Fuse } from "pocketbomb-fuse/node";
 import {
   codegen,
   DEFAULT_ENV_FILE,
@@ -49,7 +49,7 @@ async function startFuseFromFlags(
   flags: { seed?: string; "data-dir"?: string },
   io: Io,
 ): Promise<Fuse> {
-  const { startFuse } = await import("@pocketbomb/fuse/node");
+  const { startFuse } = await import("pocketbomb-fuse/node");
   const fuse = await startFuse({
     seed: flags.seed,
     dataDir: flags["data-dir"],
@@ -191,7 +191,7 @@ async function runInfo(io: Io): Promise<number> {
   const cwd = process.cwd();
   const mask = (v?: string) => (v ? v.substring(0, 6) + "…" : "(not set)");
 
-  io.log("@pocketbomb/dynamite " + readPackageVersion());
+  io.log("pocketbomb-dynamite " + readPackageVersion());
   io.log("node " + process.version);
   io.log("POCKETBOMB_URL         " + (process.env.POCKETBOMB_URL || "(not set)"));
   io.log("POCKETBOMB_PUBLIC_KEY  " + mask(process.env.POCKETBOMB_PUBLIC_KEY));
@@ -206,7 +206,7 @@ async function runInfo(io: Io): Promise<number> {
   }
 
   try {
-    const { resolveFuseBinary } = await import("@pocketbomb/fuse/node");
+    const { resolveFuseBinary } = await import("pocketbomb-fuse/node");
     const resolved = resolveFuseBinary({ log: () => {} });
     io.log("fuse binary            " + resolved.bin + " (" + resolved.source + ")");
   } catch (err) {

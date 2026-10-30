@@ -9,9 +9,9 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createRequestListener } from "@pocketbomb/detonator/adapters/node";
+import { createRequestListener } from "pocketbomb-detonator/adapters/node";
 import { createRequestHandler, type ServerBuild } from "react-router";
-import { ReauthorizeHeader } from "@pocketbomb/detonator/server";
+import { ReauthorizeHeader } from "pocketbomb-detonator/server";
 import { addDocumentResponseHeaders, handleEmbeddedRequest } from "./app/detonator.server.ts";
 
 const root = path.dirname(fileURLToPath(import.meta.url));

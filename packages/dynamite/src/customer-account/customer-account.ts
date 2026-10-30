@@ -9,7 +9,7 @@ import {
   type AuthStore,
   type Client,
   type GraphQLResponse,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 import type { RequestContext } from "../core/request-context";
 import {
   executeGraphQL as sendGraphQL,

@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-import { AuthStore } from "@pocketbomb/primer";
+import { AuthStore } from "pocketbomb-primer";
 import { act, useState } from "react";
 import { hydrateRoot, type Root } from "react-dom/client";
 import { renderToString } from "react-dom/server";

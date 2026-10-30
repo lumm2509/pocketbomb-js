@@ -1,5 +1,5 @@
 {
-  "name": "@pocketbomb/fuse",
+  "name": "pocketbomb-fuse",
   "version": "0.2.0",
   "description": "PocketBomb local dev runtime: builds/locates and runs the PocketBomb server with a temporary or dev data dir, the Owner superuser and a seed (Node.js API and Vite plugin).",
   "license": "MIT",
@@ -49,7 +49,7 @@
     "test:integration": "vitest run --config vitest.integration.config.ts"
   },
   "dependencies": {
-    "@pocketbomb/primer": "workspace:^"
+    "pocketbomb-primer": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

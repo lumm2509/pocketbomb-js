@@ -5,7 +5,7 @@ import {
   JWTVerificationError,
   verifyApplicationJWT,
 } from "./jwt";
-import { base64URLEncode } from "@pocketbomb/primer";
+import { base64URLEncode } from "pocketbomb-primer";
 
 const issuer = "https://example.com/oauth2/_applicationInstallations";
 

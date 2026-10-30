@@ -1,5 +1,5 @@
-import { detcordScript } from "@pocketbomb/detcord";
-import { AuthStore, base64Decode, Client } from "@pocketbomb/primer";
+import { detcordScript } from "pocketbomb-detcord";
+import { AuthStore, base64Decode, Client } from "pocketbomb-primer";
 import {
   applicationInstallationsCollection,
   baseURLFromIssuer,

@@ -1,7 +1,7 @@
 import http from "node:http";
 import net from "node:net";
 import path from "node:path";
-import type { FuseOptions } from "@pocketbomb/fuse/node";
+import type { FuseOptions } from "pocketbomb-fuse/node";
 
 /**
  * The fuse options of the monorepo ($POCKETBOMB_BIN, $POCKETBOMB_SRC or ../pocketbase next to it).

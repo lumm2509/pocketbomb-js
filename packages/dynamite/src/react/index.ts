@@ -1,4 +1,4 @@
-// @pocketbomb/dynamite/react
+// pocketbomb-dynamite/react
 //
 // React bindings (SSR-safe; React >= 18): DynamiteProvider, useStorefront, useCustomer,
 // useStorefrontQuery, Pagination (Relay connections, URL cursors) and FileImage.

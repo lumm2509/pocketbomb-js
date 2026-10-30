@@ -1,7 +1,7 @@
 "use client";
 
-import type { AuthRecord } from "@pocketbomb/primer";
-import { DynamiteProvider } from "@pocketbomb/dynamite/react";
+import type { AuthRecord } from "pocketbomb-primer";
+import { DynamiteProvider } from "pocketbomb-dynamite/react";
 
 const customer = { routes: { login: "/account/login", logout: "/account/logout" } };
 

@@ -1,4 +1,4 @@
-// @pocketbomb/primer/internal
+// pocketbomb-primer/internal
 //
 // The PocketBomb dashboard internal services (collections, settings, logs, roles, webhooks, ...).
 // NB! Used by the PocketBomb dashboard only: it is NOT a public API and it may change without notice.

@@ -1,5 +1,5 @@
 import type { TestProject } from "vitest/node";
-import { startFuse } from "@pocketbomb/fuse/node";
+import { startFuse } from "pocketbomb-fuse/node";
 import { monorepoFuseOptions } from "../../../scripts/pocketbomb-server.ts";
 
 export default async function setup(project: TestProject) {

@@ -1,6 +1,6 @@
 # PocketBomb app (React Router v7)
 
-A PocketBomb application starter with `@pocketbomb/detonator` (like the Shopify app template).
+A PocketBomb application starter with `pocketbomb-detonator` (like the Shopify app template).
 
 - `pocketbomb.app.toml`: scopes, the managed webhook subscriptions, the dashboard extensions (navigation +
   record action) and the install/uninstall URLs

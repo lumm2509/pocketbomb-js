@@ -1,4 +1,4 @@
-// @pocketbomb/dynamite/vite
+// pocketbomb-dynamite/vite
 //
 // The Vite plugin of the PocketBomb apps:
 // - env: POCKETBOMB_URL and POCKETBOMB_PUBLIC_KEY are exposed to the client code as
@@ -9,7 +9,7 @@
 // - fuse: a local PocketBomb server started with the dev server
 import type { Connect, Plugin, ResolvedConfig } from "vite";
 import { loadEnv } from "vite";
-import type { Fuse, FuseOptions } from "@pocketbomb/fuse/node";
+import type { Fuse, FuseOptions } from "pocketbomb-fuse/node";
 
 type ProxyOptions = {
   target: string;
@@ -161,7 +161,7 @@ export function dynamite(options: DynamitePluginOptions = {}): Plugin {
       const start = async () => {
         if (fusePending) {
           fusePending = false;
-          const { startFuse } = await import("@pocketbomb/fuse/node");
+          const { startFuse } = await import("pocketbomb-fuse/node");
           fuse = await startFuse(options.fuse === true ? {} : (options.fuse as FuseOptions));
           Object.assign(process.env, fuse.env);
           env = { ...env, ...fuse.env };

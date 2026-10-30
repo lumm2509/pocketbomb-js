@@ -1,7 +1,7 @@
 // The fuse seed of the examples smoke runs on a fresh PocketBomb server
 // (a "products" collection, a customer and the "example_shop" OAuth2 client with
 // a public and a private API key) and returns them as environment variables.
-import type { FuseSeedContext } from "@pocketbomb/fuse/node";
+import type { FuseSeedContext } from "pocketbomb-fuse/node";
 
 export const EXAMPLE_CLIENT_ID = "example_shop";
 export const EXAMPLE_WEB_REDIRECT = "http://localhost:5173/account/callback";

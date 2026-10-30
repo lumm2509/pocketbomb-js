@@ -5,11 +5,11 @@ import {
   MemoryCache,
   type RequestContext,
   type StorefrontClient,
-} from "@pocketbomb/dynamite";
+} from "pocketbomb-dynamite";
 import {
   createCustomerAccountClient,
   type CustomerAccountClient,
-} from "@pocketbomb/dynamite/customer-account";
+} from "pocketbomb-dynamite/customer-account";
 
 export interface AppContext {
   [key: string]: unknown;

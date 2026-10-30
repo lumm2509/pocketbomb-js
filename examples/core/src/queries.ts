@@ -1,4 +1,4 @@
-import { gql } from "@pocketbomb/dynamite";
+import { gql } from "pocketbomb-dynamite";
 
 export type Product = { id: string; title: string; handle: string };
 

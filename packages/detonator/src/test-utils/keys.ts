@@ -1,5 +1,5 @@
 // Test helpers: a signing key + JWKS and a signed JWT (like the PocketBomb issuer).
-import { base64URLEncode } from "@pocketbomb/primer";
+import { base64URLEncode } from "pocketbomb-primer";
 
 export type TestKey = { jwk: any; privateKey: CryptoKey; alg: string; kid: string };
 

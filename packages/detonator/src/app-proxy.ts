@@ -1,4 +1,4 @@
-import { getWebCrypto, toBytes } from "@pocketbomb/primer";
+import { getWebCrypto, toBytes } from "pocketbomb-primer";
 import { timingSafeEqual } from "./crypto";
 
 /**

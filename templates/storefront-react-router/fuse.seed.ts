@@ -3,7 +3,7 @@
 // and a private API key. The returned variables are exposed to the app (process.env).
 //
 // APP_URL (comma separated) are the registered app origins (default http://localhost:3000).
-import type { FuseSeedContext } from "@pocketbomb/fuse/node";
+import type { FuseSeedContext } from "pocketbomb-fuse/node";
 
 export const DEMO_CUSTOMER = { email: "demo@example.com", password: "DemoPass123456" };
 export const CLIENT_ID = "storefront";

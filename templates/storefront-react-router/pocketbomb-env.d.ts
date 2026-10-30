@@ -28,7 +28,7 @@ export type introspection = {
 };
 };
 
-declare module "@pocketbomb/dynamite/graphql" {
+declare module "pocketbomb-dynamite/graphql" {
   interface PocketBombSchema {
     introspection: introspection;
   }

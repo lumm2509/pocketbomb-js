@@ -1,6 +1,6 @@
 // The detonator setup of the application (like shopify.server.ts).
-import { detonator } from "@pocketbomb/detonator/server";
-import { SqliteSessionStorage } from "@pocketbomb/detonator/session-storage";
+import { detonator } from "pocketbomb-detonator/server";
+import { SqliteSessionStorage } from "pocketbomb-detonator/session-storage";
 
 const app = detonator({
   appUrl: process.env.APP_URL || "http://localhost:3000",

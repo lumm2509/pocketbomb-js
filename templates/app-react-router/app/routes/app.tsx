@@ -1,4 +1,4 @@
-import { appContextOf, AppProvider } from "@pocketbomb/detonator/react";
+import { appContextOf, AppProvider } from "pocketbomb-detonator/react";
 import { useEffect } from "react";
 import {
   isRouteErrorResponse,

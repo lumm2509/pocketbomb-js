@@ -1,5 +1,5 @@
 {
-  "name": "@pocketbomb/example-expo-minimal",
+  "name": "pocketbomb-example-expo-minimal",
   "version": "0.0.0",
   "private": true,
   "description": "Minimal Expo (React Native) example: storefront public key client, customer login with the in-app auth session and the AsyncStorage auth store.",
@@ -11,18 +11,18 @@
     "smoke": "node ../../scripts/pocketbomb-server.ts --seed ../../scripts/example-fixtures.ts -- node src/smoke.ts"
   },
   "dependencies": {
-    "@pocketbomb/dynamite": "workspace:^",
-    "@pocketbomb/primer": "workspace:^",
     "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~57.0.31",
     "expo-web-browser": "~57.0.3",
+    "pocketbomb-dynamite": "workspace:^",
+    "pocketbomb-primer": "workspace:^",
     "react": "19.2.3",
     "react-native": "0.86.3"
   },
   "devDependencies": {
-    "@pocketbomb/fuse": "workspace:^",
     "@types/node": "^24.0.0",
     "@types/react": "~19.2.0",
+    "pocketbomb-fuse": "workspace:^",
     "typescript": "catalog:"
   }
 }

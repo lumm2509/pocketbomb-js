@@ -1,5 +1,5 @@
 // A browser-side search with the public storefront client (useStorefrontQuery).
-import { useStorefront, useStorefrontQuery } from "@pocketbomb/dynamite/react";
+import { useStorefront, useStorefrontQuery } from "pocketbomb-dynamite/react";
 import { useState } from "react";
 import { PRODUCT_SEARCH } from "../lib/queries";
 import { ProductCard } from "./ProductCard";

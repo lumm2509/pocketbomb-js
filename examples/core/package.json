@@ -1,5 +1,5 @@
 {
-  "name": "@pocketbomb/example-core",
+  "name": "pocketbomb-example-core",
   "version": "0.0.0",
   "private": true,
   "description": "Vanilla TypeScript example: a storefront page (public key + customer login) and a Node.js script (private key + request context).",
@@ -12,8 +12,8 @@
     "smoke": "node ../../scripts/pocketbomb-server.ts --seed ../../scripts/example-fixtures.ts -- node src/node.ts"
   },
   "dependencies": {
-    "@pocketbomb/dynamite": "workspace:^",
-    "@pocketbomb/primer": "workspace:^"
+    "pocketbomb-dynamite": "workspace:^",
+    "pocketbomb-primer": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

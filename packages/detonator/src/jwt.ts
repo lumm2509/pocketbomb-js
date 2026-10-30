@@ -1,4 +1,4 @@
-import { base64Decode, getWebCrypto, toBytes } from "@pocketbomb/primer";
+import { base64Decode, getWebCrypto, toBytes } from "pocketbomb-primer";
 
 /**
  * The `typ` header of the application extension launch tokens.

@@ -1,4 +1,4 @@
-// @pocketbomb/detcord
+// pocketbomb-detcord
 //
 // The App Bridge of the PocketBomb embedded applications (browser only, no dependencies).
 import { installDetcord, type Detcord } from "./runtime";

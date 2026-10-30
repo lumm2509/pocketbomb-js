@@ -11,7 +11,7 @@ import http from "node:http";
 import path from "node:path";
 import { Readable } from "node:stream";
 import { fileURLToPath } from "node:url";
-import { getBuyerIp } from "@pocketbomb/dynamite";
+import { getBuyerIp } from "pocketbomb-dynamite";
 import { createRequestHandler, type ServerBuild } from "react-router";
 import { createAppContext } from "./app/lib/context.server.ts";
 

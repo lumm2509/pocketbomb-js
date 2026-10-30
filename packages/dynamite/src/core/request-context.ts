@@ -1,4 +1,4 @@
-import { CookieAuthStore, type CookieAuthStoreConfig } from "@pocketbomb/primer";
+import { CookieAuthStore, type CookieAuthStoreConfig } from "pocketbomb-primer";
 import { getBuyerIp, type BuyerIpOptions } from "./buyer-ip";
 import type { CacheStore, WaitUntil } from "./cache";
 

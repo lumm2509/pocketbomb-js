@@ -1,12 +1,12 @@
-# @pocketbomb/detonator
+# pocketbomb-detonator
 
 The PocketBomb Applications framework (like `@shopify/shopify-app-react-router`), on top of the existing server
 APIs: install/uninstall notifications, managed webhooks, embedded dashboard extensions and offline admin clients.
 
 ```ts
 // app/detonator.server.ts
-import { detonator } from "@pocketbomb/detonator/server";
-import { SqliteSessionStorage } from "@pocketbomb/detonator/session-storage";
+import { detonator } from "pocketbomb-detonator/server";
+import { SqliteSessionStorage } from "pocketbomb-detonator/session-storage";
 
 const app = detonator({
   appUrl: process.env.APP_URL!,

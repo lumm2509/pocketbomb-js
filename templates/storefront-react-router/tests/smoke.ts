@@ -8,7 +8,7 @@ import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { freePort, startFuse, type Fuse } from "@pocketbomb/fuse/node";
+import { freePort, startFuse, type Fuse } from "pocketbomb-fuse/node";
 import { chromium, type Browser, type Page } from "playwright";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");

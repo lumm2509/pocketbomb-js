@@ -1,5 +1,5 @@
 {
-  "name": "@pocketbomb/template-storefront-react-router",
+  "name": "pocketbomb-template-storefront-react-router",
   "version": "0.0.0",
   "private": true,
   "description": "PocketBomb storefront starter: React Router v7 SSR with dynamite (catalog, pagination, product pages, customer account).",
@@ -13,21 +13,21 @@
     "test:e2e": "node tests/smoke.ts && node tests/ts-plugin.ts"
   },
   "dependencies": {
-    "@pocketbomb/dynamite": "workspace:^",
-    "@pocketbomb/primer": "workspace:^",
     "@react-router/node": "^7.18.0",
     "isbot": "^5.1.0",
+    "pocketbomb-dynamite": "workspace:^",
+    "pocketbomb-primer": "workspace:^",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-router": "^7.18.0"
   },
   "devDependencies": {
-    "@pocketbomb/fuse": "workspace:^",
     "@react-router/dev": "^7.18.0",
     "@types/node": "^24.0.0",
     "@types/react": "~19.2.0",
     "@types/react-dom": "~19.2.0",
     "playwright": "1.63.0",
+    "pocketbomb-fuse": "workspace:^",
     "typescript": "catalog:",
     "vite": "catalog:"
   }

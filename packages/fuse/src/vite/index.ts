@@ -1,4 +1,4 @@
-// @pocketbomb/fuse/vite
+// pocketbomb-fuse/vite
 //
 // A Vite plugin that starts fuse with the dev server and exposes its env (POCKETBOMB_URL and the
 // seed env, e.g. the API keys) to `process.env` of the dev server process.

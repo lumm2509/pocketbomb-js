@@ -5,8 +5,8 @@ import {
   MemoryLoginSession,
   type AsyncKeyValueStorage,
   type OpenAuthSession,
-} from "@pocketbomb/primer";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
+} from "pocketbomb-primer";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
 import { CookieJar, followHostedFlow, ownerClient, raw } from "./helpers";
 
 const url = inject("pbURL");

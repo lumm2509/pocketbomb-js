@@ -5,8 +5,8 @@ import {
   CookieAuthStore,
   createAccountClient,
   createPublicClient,
-} from "@pocketbomb/primer";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+} from "pocketbomb-primer";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 import { CookieJar, followHostedFlow, loginAccountClient, ownerClient, raw } from "./helpers";
 
 const url = inject("pbURL");

@@ -1,5 +1,5 @@
 import { afterAll, afterEach, assert, beforeAll, describe, expect, test } from "vitest";
-import { base64Decode } from "@pocketbomb/primer";
+import { base64Decode } from "pocketbomb-primer";
 import { baseURLFromIssuer, createAdminClient, exchangeLaunchToken } from "./admin";
 import { dummyJWT, FetchMock } from "./test-utils/mocks";
 

@@ -1,9 +1,9 @@
-# @pocketbomb/primer
+# pocketbomb-primer
 
 The PocketBomb transport (browser, Node.js, edge, React Native; fetch + WebCrypto only).
 
 ```ts
-import { createPublicClient, createAccountClient, AsyncAuthStore } from "@pocketbomb/primer";
+import { createPublicClient, createAccountClient, AsyncAuthStore } from "pocketbomb-primer";
 
 // storefront (public key; browser/mobile safe)
 const storefront = createPublicClient({ url, publicKey: "pb_pk_..." });
@@ -27,7 +27,7 @@ const mobile = createAccountClient({
 await mobile.account.login();
 ```
 
-Entries: `@pocketbomb/primer` (public) and `@pocketbomb/primer/internal` (the PocketBomb dashboard
+Entries: `pocketbomb-primer` (public) and `pocketbomb-primer/internal` (the PocketBomb dashboard
 internal services: not a public API).
 
 Ported from the enriched PocketBase JS SDK (MIT, Gani Georgiev), see LICENSE.md.

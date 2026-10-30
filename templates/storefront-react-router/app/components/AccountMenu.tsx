@@ -1,4 +1,4 @@
-import { useCustomer } from "@pocketbomb/dynamite/react";
+import { useCustomer } from "pocketbomb-dynamite/react";
 import { Link } from "react-router";
 
 // the customer from the server session (DynamiteProvider initialCustomer); the actions

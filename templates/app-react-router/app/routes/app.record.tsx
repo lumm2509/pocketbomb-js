@@ -1,4 +1,4 @@
-import { useApp } from "@pocketbomb/detonator/react";
+import { useApp } from "pocketbomb-detonator/react";
 import { data, useLoaderData } from "react-router";
 import type { Route } from "./+types/app.record";
 import { authenticate } from "../detonator.server";

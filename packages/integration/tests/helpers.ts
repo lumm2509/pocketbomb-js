@@ -1,11 +1,11 @@
-import { AuthStore, createAccountClient, type Client } from "@pocketbomb/primer";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+import { AuthStore, createAccountClient, type Client } from "pocketbomb-primer";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 import {
   CookieJar,
   followHostedFlow,
   FUSE_OWNER as OWNER,
   signInStaff,
-} from "@pocketbomb/fuse/node";
+} from "pocketbomb-fuse/node";
 
 export { CookieJar, followHostedFlow, OWNER };
 

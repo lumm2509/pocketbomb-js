@@ -90,7 +90,7 @@ export function introspectionToSDL(introspection: IntrospectionQuery): string {
 
 /**
  * Returns the `pocketbomb-env.d.ts` of an introspection: the gql.tada introspection type
- * and the `@pocketbomb/dynamite/graphql` schema augmentation used by `graphql()`.
+ * and the `pocketbomb-dynamite/graphql` schema augmentation used by `graphql()`.
  */
 export function introspectionToEnv(introspection: IntrospectionQuery): string {
   const type = preprocessIntrospection(minifyIntrospection(introspection));
@@ -103,7 +103,7 @@ export function introspectionToEnv(introspection: IntrospectionQuery): string {
     "export type introspection = " +
     type +
     ";\n\n" +
-    'declare module "@pocketbomb/dynamite/graphql" {\n' +
+    'declare module "pocketbomb-dynamite/graphql" {\n' +
     "  interface PocketBombSchema {\n" +
     "    introspection: introspection;\n" +
     "  }\n" +

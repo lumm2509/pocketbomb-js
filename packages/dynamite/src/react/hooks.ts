@@ -3,7 +3,7 @@ import type {
   AccountLoginOptions,
   AccountLogoutOptions,
   AuthRecord,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { StorefrontQueryOptions } from "../client/storefront";
 import type { DocumentInput, ResultOf, VariablesOf } from "../graphql/graphql";

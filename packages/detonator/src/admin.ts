@@ -9,7 +9,7 @@ import {
   OAuth2TokenType,
   type AuthStrategy,
   type OAuth2TokenResponse,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 
 /**
  * The OAuth2 issuer (auth collection) of the application installations

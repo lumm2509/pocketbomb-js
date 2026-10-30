@@ -6,7 +6,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { resolveFuseBinary, type ResolveBinaryOptions } from "./binary";
 import { signInStaff } from "./owner";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 
 /**
  * The Owner superuser created by fuse on every start (`superuser upsert`).

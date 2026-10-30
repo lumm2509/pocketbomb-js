@@ -3,8 +3,8 @@
 // (the hosted pages are driven like ASWebAuthenticationSession would).
 //
 // Usage: pnpm smoke (starts a seeded PocketBomb server, see scripts/pocketbomb-server.ts)
-import type { AsyncKeyValueStorage, OpenAuthSession } from "@pocketbomb/primer";
-import { CookieJar, followHostedFlow } from "@pocketbomb/fuse/node";
+import type { AsyncKeyValueStorage, OpenAuthSession } from "pocketbomb-primer";
+import { CookieJar, followHostedFlow } from "pocketbomb-fuse/node";
 import { createShop } from "./shop.ts";
 
 const env = (name: string): string => {

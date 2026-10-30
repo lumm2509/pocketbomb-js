@@ -1,7 +1,7 @@
 "use client";
 
 // a client component with the browser public storefront client
-import { useStorefront, useStorefrontQuery } from "@pocketbomb/dynamite/react";
+import { useStorefront, useStorefrontQuery } from "pocketbomb-dynamite/react";
 import { useState } from "react";
 import { PRODUCTS } from "../lib/queries";
 

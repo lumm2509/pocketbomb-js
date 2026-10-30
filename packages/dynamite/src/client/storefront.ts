@@ -8,7 +8,7 @@ import {
   type GraphQLResponse,
   type RecordModel,
   type RecordService,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 import {
   Cache,
   sha256Hex,

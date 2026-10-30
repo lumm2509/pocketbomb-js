@@ -1,4 +1,4 @@
-import { detcordScript } from "@pocketbomb/detcord";
+import { detcordScript } from "pocketbomb-detcord";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 
 export function Layout({ children }: { children: React.ReactNode }) {

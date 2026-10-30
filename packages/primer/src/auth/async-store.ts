@@ -26,7 +26,7 @@ export interface AsyncKeyValueStorage {
  *
  * ```
  * import AsyncStorage from "@react-native-async-storage/async-storage";
- * import { AsyncAuthStore, createAccountClient } from "@pocketbomb/primer";
+ * import { AsyncAuthStore, createAccountClient } from "pocketbomb-primer";
  *
  * const authStore = new AsyncAuthStore({
  *     save:    async (serialized) => AsyncStorage.setItem("pb_auth", serialized),

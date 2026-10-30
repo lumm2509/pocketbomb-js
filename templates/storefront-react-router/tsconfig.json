@@ -3,7 +3,7 @@
   "compilerOptions": {
     "types": ["node", "vite/client"],
     "rootDirs": [".", "./.react-router/types"],
-    "plugins": [{ "name": "@pocketbomb/dynamite/ts-plugin" }]
+    "plugins": [{ "name": "pocketbomb-dynamite/ts-plugin" }]
   },
   "include": [
     "app",

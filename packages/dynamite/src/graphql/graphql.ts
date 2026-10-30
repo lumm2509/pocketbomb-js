@@ -4,7 +4,7 @@ import type {
   GraphQLFormattedError,
   GraphQLResponse,
   SendOptions,
-} from "@pocketbomb/primer";
+} from "pocketbomb-primer";
 import {
   initGraphQLTada,
   type AbstractSetupSchema,
@@ -36,7 +36,7 @@ export interface PocketBombScalars {
  * The schema of the app (augmented by the codegen output, `pocketbomb-env.d.ts`):
  *
  * ```ts
- * declare module "@pocketbomb/dynamite/graphql" {
+ * declare module "pocketbomb-dynamite/graphql" {
  *   interface PocketBombSchema { introspection: introspection }
  * }
  * ```

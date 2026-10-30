@@ -1,6 +1,6 @@
 # PocketBomb storefront (React Router v7)
 
-Server rendered storefront with `@pocketbomb/dynamite`: catalog (GraphQL), paginated list (URL cursors),
+Server rendered storefront with `pocketbomb-dynamite`: catalog (GraphQL), paginated list (URL cursors),
 product pages, browser search (public key), customer account (hosted login/signup, own sessions, logout)
 with an httpOnly cookie session. `server.ts` creates the request context (buyer IP, session, cache) of every request;
 the loaders use the private storefront client.

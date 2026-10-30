@@ -1,10 +1,10 @@
-# @pocketbomb/dynamite
+# pocketbomb-dynamite
 
 The PocketBomb storefront framework (similar to Hydrogen).
 
 ```ts
-import { createRequestContext, createStorefrontClient, gql, MemoryCache } from "@pocketbomb/dynamite";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
+import { createRequestContext, createStorefrontClient, gql, MemoryCache } from "pocketbomb-dynamite";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
 
 const cache = new MemoryCache();
 
@@ -31,9 +31,9 @@ const PRODUCTS = gql<{ products: { nodes: Array<{ id: string; title: string }> }
 );
 ```
 
-Entries: `@pocketbomb/dynamite` (core + storefront client + GraphQL), `@pocketbomb/dynamite/customer-account`,
-`@pocketbomb/dynamite/graphql` (gql.tada `graphql()` typed by `dynamite codegen`), `@pocketbomb/dynamite/react`
-(DynamiteProvider, useStorefront, useCustomer, useStorefrontQuery, Pagination, FileImage), `@pocketbomb/dynamite/vite`
-(env + private key guard, dev proxy, codegen, fuse) and `@pocketbomb/dynamite/ts-plugin` (graphqlsp for the editor).
+Entries: `pocketbomb-dynamite` (core + storefront client + GraphQL), `pocketbomb-dynamite/customer-account`,
+`pocketbomb-dynamite/graphql` (gql.tada `graphql()` typed by `dynamite codegen`), `pocketbomb-dynamite/react`
+(DynamiteProvider, useStorefront, useCustomer, useStorefrontQuery, Pagination, FileImage), `pocketbomb-dynamite/vite`
+(env + private key guard, dev proxy, codegen, fuse) and `pocketbomb-dynamite/ts-plugin` (graphqlsp for the editor).
 
 CLI: `dynamite codegen [--watch] [--fuse --seed <module>]`, `dynamite dev [--seed] [--entry server.ts]`, `dynamite info`.

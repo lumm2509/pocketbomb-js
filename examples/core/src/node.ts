@@ -10,7 +10,7 @@ import {
   flattenConnection,
   fromGlobalId,
   MemoryCache,
-} from "@pocketbomb/dynamite";
+} from "pocketbomb-dynamite";
 import { PRODUCTS } from "./queries.ts";
 
 const url = process.env.POCKETBOMB_URL;

@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": ["@pocketbomb/example-*", "@pocketbomb/integration"]
+  "ignore": ["pocketbomb-example-*", "pocketbomb-integration"]
 }

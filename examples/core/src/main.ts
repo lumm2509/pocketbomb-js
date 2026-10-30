@@ -1,7 +1,7 @@
 // Browser page: storefront GraphQL with the public key and the customer account login
 // (redirect to the hosted login page, PKCE, callback handled on the same page).
-import { createStorefrontClient, flattenConnection } from "@pocketbomb/dynamite";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
+import { createStorefrontClient, flattenConnection } from "pocketbomb-dynamite";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
 import { PRODUCTS } from "./queries.ts";
 
 const url = import.meta.env.VITE_POCKETBOMB_URL || "http://127.0.0.1:8090";

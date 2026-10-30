@@ -1,4 +1,4 @@
-import { readFragment, type FragmentOf } from "@pocketbomb/dynamite/graphql";
+import { readFragment, type FragmentOf } from "pocketbomb-dynamite/graphql";
 import { Link } from "react-router";
 import { PRODUCT_CARD } from "../lib/queries";
 

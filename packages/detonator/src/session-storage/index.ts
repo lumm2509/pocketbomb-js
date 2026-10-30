@@ -1,4 +1,4 @@
-// @pocketbomb/detonator/session-storage
+// pocketbomb-detonator/session-storage
 //
 // The installations / online sessions storages (memory and the Node.js built-in node:sqlite).
 

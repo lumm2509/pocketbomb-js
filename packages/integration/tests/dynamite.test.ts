@@ -9,9 +9,9 @@ import {
   GraphQLError,
   MemoryCache,
   type ResultOf,
-} from "@pocketbomb/dynamite";
-import { createCustomerAccountClient } from "@pocketbomb/dynamite/customer-account";
-import type { DashboardClient } from "@pocketbomb/primer/internal";
+} from "pocketbomb-dynamite";
+import { createCustomerAccountClient } from "pocketbomb-dynamite/customer-account";
+import type { DashboardClient } from "pocketbomb-primer/internal";
 import { CookieJar, followHostedFlow, ownerClient, raw } from "./helpers";
 
 const url = inject("pbURL");

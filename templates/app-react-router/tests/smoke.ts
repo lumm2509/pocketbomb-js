@@ -13,9 +13,9 @@ import http from "node:http";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createAdminClient } from "@pocketbomb/detonator";
-import { SqliteSessionStorage } from "@pocketbomb/detonator/session-storage";
-import { freePort, signInStaff } from "@pocketbomb/fuse/node";
+import { createAdminClient } from "pocketbomb-detonator";
+import { SqliteSessionStorage } from "pocketbomb-detonator/session-storage";
+import { freePort, signInStaff } from "pocketbomb-fuse/node";
 import { chromium, type Browser, type Frame, type Page } from "playwright";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");

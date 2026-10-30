@@ -1,4 +1,4 @@
-import type { AccountSessionModel } from "@pocketbomb/primer";
+import type { AccountSessionModel } from "pocketbomb-primer";
 import { Form, redirect } from "react-router";
 import type { Route } from "./+types/account";
 

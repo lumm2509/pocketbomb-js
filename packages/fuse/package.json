@@ -1,6 +1,6 @@
 {
   "name": "@pocketbomb/fuse",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "PocketBomb local dev runtime: builds/locates and runs the PocketBomb server with a temporary or dev data dir, the Owner superuser and a seed (Node.js API and Vite plugin).",
   "license": "MIT",
   "repository": {

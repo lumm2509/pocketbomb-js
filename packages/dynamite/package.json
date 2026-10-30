@@ -1,6 +1,6 @@
 {
   "name": "@pocketbomb/dynamite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "PocketBomb storefront framework: request context (buyer IP, cookie session, cache), storefront and customer account clients, gql.tada GraphQL, React bindings, Vite plugin, TypeScript plugin and the dynamite CLI (codegen, dev).",
   "license": "MIT",
   "repository": {

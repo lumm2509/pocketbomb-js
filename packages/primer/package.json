@@ -1,6 +1,6 @@
 {
   "name": "@pocketbomb/primer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "PocketBomb transport: API keys and tokens, auth stores, OAuth2 account strategy, records REST, GraphQL, realtime and file URLs (browser, Node.js, edge, React Native).",
   "license": "MIT",
   "repository": {

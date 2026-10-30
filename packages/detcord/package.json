@@ -1,6 +1,6 @@
 {
   "name": "@pocketbomb/detcord",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The App Bridge of the PocketBomb embedded applications: session tokens, navigation sync, toasts, modals, title bar and resize over postMessage with the dashboard (browser only, no dependencies).",
   "license": "MIT",
   "repository": {

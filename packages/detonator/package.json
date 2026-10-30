@@ -1,0 +1,116 @@
+{
+  "name": "@pocketbomb/detonator",
+  "version": "0.1.0",
+  "description": "PocketBomb Applications framework: install/uninstall notifications (JWKS), managed webhooks (HMAC), embedded extensions (session tokens, online staff sessions), the app proxy, offline admin clients, session storages, React bindings and the detonator CLI.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumm2509/pocketbomb-js.git",
+    "directory": "packages/detonator"
+  },
+  "bin": {
+    "detonator": "./bin/detonator.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server/index.d.ts",
+        "default": "./dist/server/index.js"
+      },
+      "require": {
+        "types": "./dist/server/index.d.cts",
+        "default": "./dist/server/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.js"
+      },
+      "require": {
+        "types": "./dist/react/index.d.cts",
+        "default": "./dist/react/index.cjs"
+      }
+    },
+    "./adapters/node": {
+      "import": {
+        "types": "./dist/adapters/node/index.d.ts",
+        "default": "./dist/adapters/node/index.js"
+      },
+      "require": {
+        "types": "./dist/adapters/node/index.d.cts",
+        "default": "./dist/adapters/node/index.cjs"
+      }
+    },
+    "./session-storage": {
+      "import": {
+        "types": "./dist/session-storage/index.d.ts",
+        "default": "./dist/session-storage/index.js"
+      },
+      "require": {
+        "types": "./dist/session-storage/index.d.cts",
+        "default": "./dist/session-storage/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@pocketbomb/detcord": "workspace:^",
+    "@pocketbomb/fuse": "workspace:^",
+    "@pocketbomb/primer": "workspace:^",
+    "smol-toml": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.0",
+    "@types/react-dom": "~19.2.0",
+    "happy-dom": "^21.0.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

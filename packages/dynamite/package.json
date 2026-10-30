@@ -1,0 +1,126 @@
+{
+  "name": "@pocketbomb/dynamite",
+  "version": "0.1.0",
+  "description": "PocketBomb storefront framework: request context (buyer IP, cookie session, cache), storefront and customer account clients, gql.tada GraphQL, React bindings, Vite plugin, TypeScript plugin and the dynamite CLI (codegen, dev).",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumm2509/pocketbomb-js.git",
+    "directory": "packages/dynamite"
+  },
+  "bin": {
+    "dynamite": "./bin/dynamite.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "ts-plugin",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "react-native": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./customer-account": {
+      "import": {
+        "types": "./dist/customer-account/index.d.ts",
+        "default": "./dist/customer-account/index.js"
+      },
+      "require": {
+        "types": "./dist/customer-account/index.d.cts",
+        "default": "./dist/customer-account/index.cjs"
+      }
+    },
+    "./graphql": {
+      "import": {
+        "types": "./dist/graphql/index.d.ts",
+        "default": "./dist/graphql/index.js"
+      },
+      "require": {
+        "types": "./dist/graphql/index.d.cts",
+        "default": "./dist/graphql/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.js"
+      },
+      "require": {
+        "types": "./dist/react/index.d.cts",
+        "default": "./dist/react/index.cjs"
+      }
+    },
+    "./vite": {
+      "import": {
+        "types": "./dist/vite/index.d.ts",
+        "default": "./dist/vite/index.js"
+      },
+      "require": {
+        "types": "./dist/vite/index.d.cts",
+        "default": "./dist/vite/index.cjs"
+      }
+    },
+    "./ts-plugin": {
+      "types": "./dist/ts-plugin/index.d.cts",
+      "default": "./dist/ts-plugin/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@0no-co/graphql.web": "^1.3.2",
+    "@0no-co/graphqlsp": "^1.17.3",
+    "@gql.tada/internal": "1.2.2",
+    "@pocketbomb/fuse": "workspace:^",
+    "@pocketbomb/primer": "workspace:^",
+    "gql.tada": "^1.11.4",
+    "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.0",
+    "@types/react-dom": "~19.2.0",
+    "happy-dom": "^21.0.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "vite": ">=6"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    }
+  }
+}

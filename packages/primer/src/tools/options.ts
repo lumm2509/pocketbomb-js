@@ -1,0 +1,149 @@
+export interface SendOptions extends RequestInit {
+  // to minimize the verbosity, any top-level field that doesn't exist
+  // in RequestInit or the fields below is treated as query parameter.
+  [key: string]: any;
+
+  /**
+   * Optional custom fetch function to use for sending the request.
+   */
+  fetch?: (url: RequestInfo | URL, config?: RequestInit) => Promise<Response>;
+
+  /**
+   * Custom headers to send with the requests.
+   */
+  headers?: { [key: string]: string };
+
+  /**
+   * The body of the request (serialized automatically for json requests).
+   */
+  body?: any;
+
+  /**
+   * Query parameters that will be appended to the request url.
+   */
+  query?: { [key: string]: any };
+
+  /**
+   * The request identifier that can be used to cancel pending requests.
+   */
+  requestKey?: string | null;
+
+  /**
+   * Skips the client auth handling for the request: no `Authorization`
+   * header from the auth store, no auto refresh and no retry on 401
+   * (e.g. for the OAuth2 protocol requests).
+   */
+  skipAuth?: boolean;
+}
+
+export interface CommonOptions extends SendOptions {
+  fields?: string;
+}
+
+export interface ListOptions extends CommonOptions {
+  page?: number;
+  perPage?: number;
+  sort?: string;
+  filter?: string;
+  skipTotal?: boolean;
+}
+
+export interface FullListOptions extends ListOptions {
+  batch?: number;
+}
+
+export interface RecordOptions extends CommonOptions {
+  expand?: string;
+}
+
+export interface RecordListOptions extends ListOptions, RecordOptions {}
+
+export interface RecordFullListOptions extends FullListOptions, RecordOptions {}
+
+export interface RecordSubscribeOptions extends SendOptions {
+  fields?: string;
+  filter?: string;
+  expand?: string;
+}
+
+export interface FileOptions extends CommonOptions {
+  thumb?: string;
+  download?: boolean;
+}
+
+// -------------------------------------------------------------------
+
+// list of known SendOptions keys (everything else is treated as query param)
+const knownSendOptionsKeys = [
+  "requestKey",
+  "fetch",
+  "headers",
+  "body",
+  "query",
+  "skipAuth",
+  // ---,
+  "cache",
+  "credentials",
+  "integrity",
+  "keepalive",
+  "method",
+  "mode",
+  "redirect",
+  "referrer",
+  "referrerPolicy",
+  "signal",
+  "window",
+];
+
+// modifies in place the provided options by moving unknown send options as query parameters.
+export function normalizeUnknownQueryParams(options?: SendOptions): void {
+  if (!options) {
+    return;
+  }
+
+  options.query = options.query || {};
+  for (let key in options) {
+    if (knownSendOptionsKeys.includes(key)) {
+      continue;
+    }
+
+    options.query[key] = options[key];
+    delete options[key];
+  }
+}
+
+export function serializeQueryParams(params: { [key: string]: any }): string {
+  const result: Array<string> = [];
+
+  for (const key in params) {
+    const encodedKey = encodeURIComponent(key);
+    const arrValue = Array.isArray(params[key]) ? params[key] : [params[key]];
+
+    for (let v of arrValue) {
+      v = prepareQueryParamValue(v);
+      if (v === null) {
+        continue;
+      }
+      result.push(encodedKey + "=" + v);
+    }
+  }
+
+  return result.join("&");
+}
+
+// encodes and normalizes the provided query param value.
+function prepareQueryParamValue(value: any): null | string {
+  if (value === null || typeof value === "undefined") {
+    return null;
+  }
+
+  if (value instanceof Date) {
+    return encodeURIComponent(value.toISOString().replace("T", " "));
+  }
+
+  if (typeof value === "object") {
+    return encodeURIComponent(JSON.stringify(value));
+  }
+
+  return encodeURIComponent(value);
+}

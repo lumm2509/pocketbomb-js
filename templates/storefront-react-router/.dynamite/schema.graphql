@@ -1,0 +1,125 @@
+"""RFC3339 date time string."""
+scalar DateTime
+
+"""Record of the products collection."""
+type Product implements Node {
+  description: String
+  handle: String
+
+  """The global ID (see Query.node)."""
+  id: ID!
+  price: Float
+  title: String
+}
+
+type ProductConnection {
+  edges: [ProductEdge!]!
+  nodes: [Product!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type Query {
+  """Fetches a single record by its global ID."""
+  node(id: ID!): Node
+
+  """Fetches a single products record (the View API rule applies)."""
+  product(
+    """The record global ID."""
+    id: ID
+    handle: String
+  ): Product
+
+  """
+  Lists the products records (the List API rule applies; null with an error if not allowed).
+  """
+  products(
+    reverse: Boolean
+    first: Int
+    after: String
+    last: Int
+    before: String
+
+    """PocketBase filter expression."""
+    filter: String
+
+    """PocketBase sort expression (only the collection scalar fields)."""
+    sort: String
+  ): ProductConnection
+
+  """Fetches a single users record (the View API rule applies)."""
+  user(
+    """The record global ID."""
+    id: ID
+    email: String
+  ): User
+
+  """
+  Lists the users records (the List API rule applies; null with an error if not allowed).
+  """
+  users(
+    after: String
+    last: Int
+    before: String
+
+    """PocketBase filter expression."""
+    filter: String
+
+    """PocketBase sort expression (only the collection scalar fields)."""
+    sort: String
+    reverse: Boolean
+    first: Int
+  ): UserConnection
+}
+
+type File {
+  filename: String!
+
+  """
+  The file URL (the protected files require a file token, see /api/files/token).
+  """
+  url(token: String): String
+}
+
+"""Record of the users collection."""
+type User implements Node {
+  avatar: File
+  created: DateTime
+  email: String
+  emailVisibility: Boolean
+
+  """The global ID (see Query.node)."""
+  id: ID!
+  name: String
+  updated: DateTime
+  verified: Boolean
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  nodes: [User!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ProductEdge {
+  cursor: String!
+  node: Product!
+}
+
+"""An object with a global ID."""
+interface Node {
+  id: ID!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}

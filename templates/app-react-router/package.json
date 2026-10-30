@@ -1,0 +1,37 @@
+{
+  "name": "@pocketbomb/template-app-react-router",
+  "version": "0.0.0",
+  "private": true,
+  "description": "PocketBomb application starter (React Router v7): install/uninstall notifications, managed webhooks, embedded dashboard extensions (navigation + record action) with online staff sessions and the app proxy.",
+  "type": "module",
+  "scripts": {
+    "dev": "detonator dev --seed ./fuse.seed.ts --entry server.ts",
+    "build": "react-router build",
+    "start": "NODE_ENV=production node --env-file-if-exists=.env server.ts",
+    "deploy": "detonator deploy",
+    "info": "detonator info",
+    "typecheck": "react-router typegen && tsc --noEmit",
+    "test:e2e": "node tests/smoke.ts"
+  },
+  "dependencies": {
+    "@pocketbomb/detcord": "workspace:^",
+    "@pocketbomb/detonator": "workspace:^",
+    "@pocketbomb/primer": "workspace:^",
+    "@react-router/fs-routes": "^7.18.0",
+    "@react-router/node": "^7.18.0",
+    "isbot": "^5.1.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-router": "^7.18.0"
+  },
+  "devDependencies": {
+    "@pocketbomb/fuse": "workspace:^",
+    "@react-router/dev": "^7.18.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.0",
+    "@types/react-dom": "~19.2.0",
+    "playwright": "1.63.0",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}

@@ -1,0 +1,46 @@
+# The PocketBomb application manifest (`detonator dev` imports it as a custom application of the
+# local fuse instance with the dev app URL; `detonator deploy` imports it into an instance).
+# The relative URLs are resolved against application_url.
+handle = "pocketbomb-app"
+name = "PocketBomb app"
+version = "1.0.0"
+description = "A PocketBomb application built with detonator."
+application_url = "http://localhost:3000"
+
+# the signed install / credentials rotation notifications (handled by /app/routes/install.tsx)
+install_url = "/install"
+# the signed uninstall notification (handled by /app/routes/uninstall.tsx)
+uninstall_url = "/uninstall"
+
+[developer]
+name = "PocketBomb"
+
+[access]
+scopes = ["read_orders", "write_orders", "write_app_proxy"]
+
+# The public storefront path /apps/pocketbomb-app/* is forwarded (signed) to /proxy/*
+# (handled by /app/routes/proxy.$.tsx; the staff can customize the path per installation)
+[app_proxy]
+url = "/proxy"
+prefix = "apps"
+subpath = "pocketbomb-app"
+
+# Handled by: /app/routes/webhooks.orders.create.tsx
+[[webhooks.subscriptions]]
+topics = ["orders.create"]
+uri = "/webhooks/orders/create"
+
+# The dashboard Applications sidebar entry (handled by /app/routes/app.tsx)
+[[extensions]]
+type = "dashboard.navigation"
+handle = "home"
+label = "PocketBomb app"
+path = "/app"
+
+# A record panel action of the orders (handled by /app/routes/app.record.tsx)
+[[extensions]]
+type = "dashboard.record_action"
+handle = "order-inspect"
+label = "Inspect with the app"
+path = "/app/record"
+collection = "orders"

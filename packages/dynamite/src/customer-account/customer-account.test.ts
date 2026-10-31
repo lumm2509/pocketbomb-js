@@ -3,7 +3,14 @@ import { assert, describe, expect, test } from "vitest";
 import { createRequestContext } from "../core/request-context";
 import { gql } from "../graphql/graphql";
 import { dummyJWT, form, mockFetch, type RecordedRequest } from "../test-utils";
-import { createCustomerAccountClient, isSafeReturnTo } from "./customer-account";
+import {
+  createCustomerAccountClient,
+  isSafeReturnTo,
+  loginOptionsFromURL,
+  loginRouteURL,
+  logoutOptionsFromURL,
+  logoutRouteURL,
+} from "./customer-account";
 
 const url = "http://pb.local";
 const app = "http://shop.local";
@@ -210,6 +217,24 @@ describe("createCustomerAccountClient() SSR", function () {
     await expect(browser.loginRedirect()).rejects.toThrow(/requestContext/);
     await expect(browser.callbackRedirect()).rejects.toThrow(/requestContext/);
     await expect(browser.logoutRedirect()).rejects.toThrow(/requestContext/);
+  });
+
+  test("the account route URLs round trip and an attacker's URL can't do more", function () {
+    const options = { returnTo: "/orders?x=1", prompt: "login", maxAge: 60, loginHint: "a@b.c" };
+    assert.deepEqual(loginOptionsFromURL("http://shop" + loginRouteURL("/in", options)), options);
+    assert.equal(loginRouteURL("/in"), "/in");
+
+    for (const returnTo of ["//evil.example", "/\\evil.example", "https://evil.example", "x"]) {
+      const unsafe = "http://shop/in?returnTo=" + encodeURIComponent(returnTo);
+      assert.deepEqual(loginOptionsFromURL(unsafe), {}, returnTo);
+    }
+    assert.deepEqual(loginOptionsFromURL("http://shop/in?maxAge=abc&scopes=x&state=y"), {});
+
+    const logout = logoutRouteURL("/out", { postLogoutRedirectUri: "http://shop/bye" });
+    assert.deepEqual(logoutOptionsFromURL("http://shop" + logout), {
+      postLogoutRedirectUri: "http://shop/bye",
+    });
+    assert.equal(logoutRouteURL("/out"), "/out");
   });
 
   test("isSafeReturnTo()", function () {

@@ -6,6 +6,7 @@ import {
   getIntrospectionQuery,
   printSchema,
   type IntrospectionQuery,
+  lexicographicSortSchema,
 } from "graphql";
 
 import { DEFAULT_ENV_FILE, DEFAULT_SCHEMA_FILE } from "../shared/constants";
@@ -85,7 +86,9 @@ export function withoutEmptyDescriptions<T>(value: T): T {
  * Returns the GraphQL SDL of an introspection.
  */
 export function introspectionToSDL(introspection: IntrospectionQuery): string {
-  return printSchema(buildClientSchema(withoutEmptyDescriptions(introspection))) + "\n";
+  // sorted: the server doesn't guarantee the order of the types between two introspections
+  const schema = buildClientSchema(withoutEmptyDescriptions(introspection));
+  return printSchema(lexicographicSortSchema(schema)) + "\n";
 }
 
 /**

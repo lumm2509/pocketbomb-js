@@ -192,6 +192,77 @@ describe("useCustomer", function () {
     assert.deepEqual(navigations, ["/account/logout", "/account/login", "/account/signup"]);
   });
 
+  test("server rendered app: the options travel in the account route URLs", async function () {
+    const navigations: Array<string> = [];
+    let actions: ReturnType<typeof useCustomer> | null = null;
+    function Capture() {
+      actions = useCustomer();
+      return null;
+    }
+
+    const render = (routes: { login: string; signup?: string; logout: string }) => (
+      <DynamiteProvider
+        url={URL_}
+        publicKey={PUBLIC_KEY}
+        customer={{ routes }}
+        navigate={(u: string) => navigations.push(u)}
+      >
+        <Capture />
+      </DynamiteProvider>
+    );
+
+    await ssrAndHydrate(
+      render({ login: "/account/login", signup: "/account/signup", logout: "/account/logout" }),
+    );
+    await act(async () => {
+      await actions!.login({ returnTo: "/orders?x=1", loginHint: "a@b.c", maxAge: 60 });
+      await actions!.signup({ returnTo: "/welcome" });
+      await actions!.logout({ postLogoutRedirectUri: "http://shop.local/bye" });
+    });
+    assert.deepEqual(navigations, [
+      "/account/login?returnTo=%2Forders%3Fx%3D1&maxAge=60&loginHint=a%40b.c",
+      "/account/signup?returnTo=%2Fwelcome",
+      "/account/logout?postLogoutRedirectUri=http%3A%2F%2Fshop.local%2Fbye",
+    ]);
+
+    // an option that can't travel in the URL is an error, not silently dropped
+    navigations.length = 0;
+    let failure: Error | null = null;
+    await act(async () => {
+      await actions!.login({ scopes: ["openid"] }).catch((err: Error) => (failure = err));
+    });
+    assert.match(String(failure), /scopes can't be sent through an account route URL/);
+    await act(async () => {
+      await actions!.logout({ redirect: false }).catch((err: Error) => (failure = err));
+    });
+    assert.match(String(failure), /redirect can't be sent/);
+    assert.deepEqual(navigations, []);
+  });
+
+  test("server rendered app without a signup route: the login route with prompt=create", async function () {
+    const navigations: Array<string> = [];
+    let actions: ReturnType<typeof useCustomer> | null = null;
+    function Capture() {
+      actions = useCustomer();
+      return null;
+    }
+
+    await ssrAndHydrate(
+      <DynamiteProvider
+        url={URL_}
+        publicKey={PUBLIC_KEY}
+        customer={{ routes: { login: "/in", logout: "/out" } }}
+        navigate={(u: string) => navigations.push(u)}
+      >
+        <Capture />
+      </DynamiteProvider>,
+    );
+    await act(async () => {
+      await actions!.signup();
+    });
+    assert.deepEqual(navigations, ["/in?prompt=create"]);
+  });
+
   test("browser app: hydration-safe, follows the account store and redirects to the hosted login", async function () {
     const navigations: Array<string> = [];
     // the login navigation happens after the PKCE S256 challenge (async WebCrypto digest that

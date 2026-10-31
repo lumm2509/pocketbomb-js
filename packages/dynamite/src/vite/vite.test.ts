@@ -107,6 +107,15 @@ describe("dynamite vite plugin: env and the private key", function () {
     );
   });
 
+  test("pre-optimizes the entries with the dev proxy on and off", function () {
+    const include = ["pocketbomb-dynamite/graphql", "pocketbomb-dynamite/react"];
+    for (const proxy of [true, false]) {
+      const plugin = dynamite({ proxy, codegen: false }) as any;
+      const config = plugin.config({ root }, { command: "serve", mode: "development" });
+      assert.deepEqual(config.optimizeDeps.include, include);
+    }
+  });
+
   test("an envPrefix exposing the private key is rejected", async function () {
     await expect(
       build(baseConfig({ plugins: [dynamite()], envPrefix: ["VITE_", "POCKETBOMB_"] })),

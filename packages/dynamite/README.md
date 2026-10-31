@@ -36,4 +36,27 @@ Entries: `pocketbomb-dynamite` (core + storefront client + GraphQL), `pocketbomb
 (DynamiteProvider, useStorefront, useCustomer, useStorefrontQuery, Pagination, FileImage), `pocketbomb-dynamite/vite`
 (env + private key guard, dev proxy, codegen, fuse) and `pocketbomb-dynamite/ts-plugin` (graphqlsp for the editor).
 
-CLI: `dynamite codegen [--watch] [--fuse --seed <module>]`, `dynamite dev [--seed] [--entry server.ts]`, `dynamite info`.
+CLI: `dynamite codegen [--watch] [--fuse --seed <module>]`, `dynamite dev [--seed] [--entry server.ts]`,
+`dynamite check [--schema <file>]`, `dynamite info`.
+
+## Global ids
+
+GraphQL is read-only and its `id` fields are Relay global ids: base64url of `{collectionName}:{recordId}`. The REST
+API takes record ids, so convert them when a GraphQL result drives a write:
+
+```ts
+import { fromGlobalId, toGlobalId } from "pocketbomb-dynamite/graphql";
+
+const { todos } = await customer.query(TODOS);                       // todos.nodes[0].id = "dG9kb3M6NDFoa2s..."
+const { collectionName, id } = fromGlobalId(todos.nodes[0].id);      // "todos", "41hkk..." (throws if it is invalid)
+await customer.client.collection(collectionName).update(id, { done: true });
+
+await storefront.query(TODO, { variables: { id: toGlobalId("todos", id) } }); // the other way around
+```
+
+## Checking the documents
+
+`tsc` types the results of the `graphql()` documents but doesn't validate the documents themselves (an unknown field
+is flagged only by the editor plugin). `dynamite check` validates every `graphql()` document of the project
+against `.dynamite/schema.graphql` and fails with `file:line:column`; add it to your typecheck script.
+It needs `typescript` installed in the project.

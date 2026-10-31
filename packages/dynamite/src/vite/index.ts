@@ -132,8 +132,13 @@ export function dynamite(options: DynamitePluginOptions = {}): Plugin {
       // fuse is started with the first dev request (not by the build/typegen helper servers)
       fusePending = isDev && !!options.fuse && !env.POCKETBOMB_URL;
 
+      // discovered late they make a first visit reload the page halfway through
+      const optimizeDeps = {
+        include: ["pocketbomb-dynamite/graphql", "pocketbomb-dynamite/react"],
+      };
+
       if (!proxyEnabled()) {
-        return;
+        return { optimizeDeps };
       }
 
       const proxy: Record<string, ProxyOptions> = {};
@@ -148,7 +153,7 @@ export function dynamite(options: DynamitePluginOptions = {}): Plugin {
         };
       }
 
-      return { server: { proxy } };
+      return { optimizeDeps, server: { proxy } };
     },
 
     configResolved(config) {

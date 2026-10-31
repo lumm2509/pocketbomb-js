@@ -267,3 +267,80 @@ export function createCustomerAccountClient(
 export function isSafeReturnTo(path: string): boolean {
   return path.startsWith("/") && !path.startsWith("//") && !path.startsWith("/\\");
 }
+
+/**
+ * The login options that a client can ask for through the login route URL
+ * (`useCustomer().login()` of a server rendered app).
+ */
+export type LoginRouteOptions = Pick<
+  LoginRedirectOptions,
+  "returnTo" | "prompt" | "maxAge" | "loginHint"
+>;
+
+/**
+ * Returns the login route URL with the provided options (see {@link loginOptionsFromURL}).
+ */
+export function loginRouteURL(route: string, options: LoginRouteOptions = {}): string {
+  const params = new URLSearchParams();
+  if (options.returnTo !== undefined) params.set("returnTo", options.returnTo);
+  if (options.prompt !== undefined) params.set("prompt", options.prompt);
+  if (options.maxAge !== undefined) params.set("maxAge", String(options.maxAge));
+  if (options.loginHint !== undefined) params.set("loginHint", options.loginHint);
+
+  const query = params.toString();
+  return query ? route + (route.includes("?") ? "&" : "?") + query : route;
+}
+
+/**
+ * Returns the login options of a login route request, for `loginRedirect()`:
+ *
+ * ```ts
+ * return context.customer.loginRedirect(loginOptionsFromURL(request.url));
+ * ```
+ *
+ * The URL is attacker controlled (anyone can send a link): an unsafe `returnTo` (see {@link isSafeReturnTo})
+ * and an invalid `maxAge` are dropped, and no other option can be set through it.
+ */
+export function loginOptionsFromURL(url: string | URL): LoginRouteOptions {
+  const params = new URL(url, "http://localhost").searchParams;
+  const result: LoginRouteOptions = {};
+
+  const returnTo = params.get("returnTo");
+  if (returnTo && isSafeReturnTo(returnTo)) result.returnTo = returnTo;
+
+  const prompt = params.get("prompt");
+  if (prompt) result.prompt = prompt;
+
+  const maxAge = params.get("maxAge");
+  if (maxAge && /^\d+$/.test(maxAge)) result.maxAge = parseInt(maxAge, 10);
+
+  const loginHint = params.get("loginHint");
+  if (loginHint) result.loginHint = loginHint;
+
+  return result;
+}
+
+/**
+ * The logout option that a client can ask for through the logout route URL.
+ */
+export type LogoutRouteOptions = Pick<AccountLogoutOptions, "postLogoutRedirectUri">;
+
+/**
+ * Returns the logout route URL with the provided options (see {@link logoutOptionsFromURL}).
+ */
+export function logoutRouteURL(route: string, options: LogoutRouteOptions = {}): string {
+  if (options.postLogoutRedirectUri === undefined) {
+    return route;
+  }
+  const query = new URLSearchParams({ postLogoutRedirectUri: options.postLogoutRedirectUri });
+  return route + (route.includes("?") ? "&" : "?") + query;
+}
+
+/**
+ * Returns the logout options of a logout route request, for `logoutRedirect()`.
+ * The issuer accepts only the registered post logout redirect URIs of the client.
+ */
+export function logoutOptionsFromURL(url: string | URL): LogoutRouteOptions {
+  const uri = new URL(url, "http://localhost").searchParams.get("postLogoutRedirectUri");
+  return uri ? { postLogoutRedirectUri: uri } : {};
+}

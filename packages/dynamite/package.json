@@ -113,10 +113,14 @@
   },
   "peerDependencies": {
     "react": ">=18",
+    "typescript": ">=5",
     "vite": ">=6"
   },
   "peerDependenciesMeta": {
     "react": {
+      "optional": true
+    },
+    "typescript": {
       "optional": true
     },
     "vite": {

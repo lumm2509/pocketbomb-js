@@ -105,6 +105,16 @@ describe("codegen", function () {
     await expect(introspect({ url: "http://x", fetch: failing as any })).rejects.toThrow(/boom/);
   });
 
+  test("introspectionToSDL() doesn't depend on the order of the introspection types", function () {
+    const introspection = introspectionFromSchema(buildSchema(SDL));
+    const reversed = {
+      __schema: { ...introspection.__schema, types: introspection.__schema.types.toReversed() },
+    };
+
+    assert.notDeepEqual(reversed.__schema.types, introspection.__schema.types);
+    assert.equal(introspectionToSDL(reversed), introspectionToSDL(introspection));
+  });
+
   test("introspectionToSDL() and introspectionToEnv()", function () {
     const introspection = introspectionFromSchema(buildSchema(SDL));
 

@@ -7,7 +7,48 @@ import type {
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { StorefrontQueryOptions } from "../client/storefront";
 import type { DocumentInput, ResultOf, VariablesOf } from "../graphql/graphql";
+import {
+  loginRouteURL,
+  logoutRouteURL,
+  type LoginRouteOptions,
+} from "../customer-account/customer-account";
 import { useDynamiteContext } from "./context";
+
+/**
+ * The login options of {@link useCustomer}. `returnTo` is the page to return to after the
+ * login (the account routes validate it with `isSafeReturnTo`).
+ *
+ * With the account routes of a server rendered app the options travel in the route URL, so only
+ * `returnTo`, `prompt`, `maxAge` and `loginHint` are supported: the route decides everything else.
+ */
+export interface CustomerLoginOptions extends AccountLoginOptions {
+  returnTo?: string;
+}
+
+function rejectRouteOptions(options: Record<string, unknown>): void {
+  const names = Object.keys(options).filter((name) => options[name] !== undefined);
+  if (names.length) {
+    throw new Error(
+      "useCustomer(): " +
+        names.join(", ") +
+        " can't be sent through an account route URL; set them in the route loader instead.",
+    );
+  }
+}
+
+function routeLoginOptions(options: CustomerLoginOptions = {}): LoginRouteOptions {
+  const { returnTo, prompt, maxAge, loginHint, ...rest } = options;
+  rejectRouteOptions(rest);
+  return { returnTo, prompt, maxAge, loginHint };
+}
+
+function accountLoginOptions(options?: CustomerLoginOptions): AccountLoginOptions | undefined {
+  if (options?.returnTo === undefined) {
+    return options;
+  }
+  const { returnTo, ...rest } = options;
+  return { ...rest, state: { ...rest.state, returnTo } };
+}
 
 export interface CustomerState {
   /** The signed in customer record (null if signed out). */
@@ -18,9 +59,9 @@ export interface CustomerState {
   /** The last account error (e.g. a failed callback). */
   error: Error | null;
   /** Starts the login (server route navigation, browser redirect or mobile auth session). */
-  login(options?: AccountLoginOptions): Promise<AccountCallbackResult | null>;
+  login(options?: CustomerLoginOptions): Promise<AccountCallbackResult | null>;
   /** Starts the signup (`prompt=create`). */
-  signup(options?: Omit<AccountLoginOptions, "prompt">): Promise<AccountCallbackResult | null>;
+  signup(options?: Omit<CustomerLoginOptions, "prompt">): Promise<AccountCallbackResult | null>;
   /** Signs out (server route navigation or the account logout). */
   logout(options?: AccountLogoutOptions): Promise<void>;
 }
@@ -82,25 +123,30 @@ export function useCustomer(): CustomerState {
   }, []);
 
   const login = useCallback(
-    (options?: AccountLoginOptions) =>
+    (options?: CustomerLoginOptions) =>
       run(async () => {
         if (customerRoutes) {
-          navigate(customerRoutes.login);
+          navigate(loginRouteURL(customerRoutes.login, routeLoginOptions(options)));
           return null;
         }
-        return customerClient ? customerClient.login(options) : null;
+        return customerClient ? customerClient.login(accountLoginOptions(options)) : null;
       }),
     [run, customerRoutes, customerClient, navigate],
   );
 
   const signup = useCallback(
-    (options?: Omit<AccountLoginOptions, "prompt">) =>
+    (options?: Omit<CustomerLoginOptions, "prompt">) =>
       run(async () => {
         if (customerRoutes) {
-          navigate(customerRoutes.signup || customerRoutes.login);
+          const routeOptions = routeLoginOptions(options);
+          navigate(
+            customerRoutes.signup
+              ? loginRouteURL(customerRoutes.signup, routeOptions)
+              : loginRouteURL(customerRoutes.login, { ...routeOptions, prompt: "create" }),
+          );
           return null;
         }
-        return customerClient ? customerClient.signup(options) : null;
+        return customerClient ? customerClient.signup(accountLoginOptions(options)) : null;
       }),
     [run, customerRoutes, customerClient, navigate],
   );
@@ -109,7 +155,9 @@ export function useCustomer(): CustomerState {
     (options?: AccountLogoutOptions) =>
       run(async () => {
         if (customerRoutes) {
-          navigate(customerRoutes.logout);
+          const { postLogoutRedirectUri, ...rest } = options || {};
+          rejectRouteOptions(rest);
+          navigate(logoutRouteURL(customerRoutes.logout, { postLogoutRedirectUri }));
           return;
         }
         await customerClient?.logout(options);

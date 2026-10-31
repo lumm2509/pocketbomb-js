@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import type { Fuse } from "pocketbomb-fuse/node";
+import { check } from "./check";
 import {
   codegen,
   DEFAULT_ENV_FILE,
@@ -26,6 +27,8 @@ Commands:
             --seed <module>  --data-dir <dir>
             --entry <file>   run a custom server entry with Node.js (default: the Vite dev server)
             --port <port>    the Vite dev server port
+  check     Validate the graphql() documents of the project against the schema
+            --schema <file>        (default ${DEFAULT_SCHEMA_FILE})
   info      Print the PocketBomb environment and the generated files status
 `;
 
@@ -187,6 +190,34 @@ async function runDev(argv: Array<string>, io: Io): Promise<number> {
   return 0;
 }
 
+async function runCheck(argv: Array<string>, io: Io): Promise<number> {
+  const { values } = parseArgs({
+    args: argv,
+    options: { schema: { type: "string" }, cwd: { type: "string" } },
+  });
+  const cwd = path.resolve(values.cwd || process.cwd());
+
+  let result;
+  try {
+    result = await check({ cwd, schemaFile: values.schema });
+  } catch (err) {
+    io.error("dynamite check: " + (err as Error).message);
+    return 2;
+  }
+
+  for (const p of result.problems) {
+    io.error(`${path.relative(cwd, p.file)}:${p.line}:${p.column} ${p.message}`);
+  }
+  if (result.problems.length) {
+    io.error(
+      `dynamite check: ${result.problems.length} problem(s) in ${result.documents} documents`,
+    );
+    return 1;
+  }
+  io.log(`dynamite check: ${result.documents} documents OK`);
+  return 0;
+}
+
 async function runInfo(io: Io): Promise<number> {
   const cwd = process.cwd();
   const mask = (v?: string) => (v ? v.substring(0, 6) + "…" : "(not set)");
@@ -227,6 +258,8 @@ export async function run(argv: Array<string>, io: Io = defaultIo): Promise<numb
       return runCodegen(rest, io);
     case "dev":
       return runDev(rest, io);
+    case "check":
+      return runCheck(rest, io);
     case "info":
       return runInfo(io);
     case "--version":
@@ -245,4 +278,5 @@ export async function run(argv: Array<string>, io: Io = defaultIo): Promise<numb
   }
 }
 
+export * from "./check";
 export * from "./codegen";

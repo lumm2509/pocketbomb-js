@@ -6,7 +6,7 @@ import type { Installation } from "../session-storage/types";
 import { generateKey, signJWT, type TestKey } from "../test-utils/keys";
 import { dummyJWT } from "../test-utils/mocks";
 import { signWebhookBody } from "../webhooks";
-import { decodeJWT, detonator, redactIdToken, relaunchResponse } from "./detonator";
+import { decodeJWT, detonator, redactIdToken, relaunchResponse, withoutIdToken } from "./detonator";
 
 const PB = "https://pb.example.com";
 const ISSUER = PB + "/oauth2/_applicationInstallations";
@@ -1021,6 +1021,22 @@ describe("authenticate.launch() / authenticate.admin()", function () {
     assert.isNull(
       (await headersOf(APP + "/app?id_token=" + tampered)).get("content-security-policy"),
     );
+  });
+
+  test("withoutIdToken()", function () {
+    const moved = withoutIdToken(
+      new Request("http://app/app/users/1?a=1&id_token=TOK", { headers: { "x-other": "1" } }),
+    );
+    assert.equal(moved.url, "http://app/app/users/1?a=1");
+    assert.equal(moved.headers.get("authorization"), "Bearer TOK");
+    assert.equal(moved.headers.get("x-other"), "1");
+
+    const none = new Request("http://app/app");
+    assert.equal(withoutIdToken(none), none);
+
+    // only a document load: a request with a body stays untouched
+    const post = new Request("http://app/app?id_token=TOK", { method: "POST", body: "x" });
+    assert.equal(withoutIdToken(post), post);
   });
 
   test("redactIdToken()", function () {

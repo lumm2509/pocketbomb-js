@@ -30,6 +30,8 @@ export const { authenticate, unauthenticated } = app;
   token, reload with `id_token`, stripped with `history.replaceState`); outside of an iframe a page links back to the dashboard.
 - `addDocumentResponseHeaders(request, headers)`: `Content-Security-Policy: frame-ancestors {dashboard origin}` and
   `Referrer-Policy: no-referrer`; `handleEmbeddedRequest(request, {paths})`: the launches + the token checks before the router.
+- `withoutIdToken(request)`: after `handleEmbeddedRequest()` and before an SSR router: moves the `id_token` of the bounce to the
+  `Authorization` header, so that the token doesn't end up in the rendered HTML (e.g. the form actions).
 - `authenticate.public.appProxy(request)`: a request forwarded by the app proxy -> verifies the signature over the
   raw query (Shopify algorithm with the webhook secret), `body_sha256` and `timestamp` (±90s) ->
   `{installation, customerId, pathPrefix, admin}`.
@@ -44,7 +46,10 @@ path; any other path falls through to the `GET /{path...}` static route if there
 without being more specific or more general (e.g. `/{a}/foo/bar`) makes the server panic at startup (intentionally loud).
 
 Entries: `.` (verifyApplicationJWT, verifyWebhookSignature, createAdminClient, exchangeLaunchToken),
-`./server`, `./react` (AppProvider/useApp), `./adapters/node`, `./session-storage` (Memory, `node:sqlite`).
+`./server` (also `scopesToPermissions`), `./react` (AppProvider/useApp), `./adapters/node`, `./session-storage` (Memory, `node:sqlite`).
 
-CLI: `detonator dev` (fuse -> import `pocketbomb.app.toml` -> run the app -> install with the manifest scopes),
-`detonator deploy --url --token`, `detonator info`.
+CLI: `detonator dev` (fuse -> import `pocketbomb.app.toml` -> run the app -> install with the manifest scopes; `--data-dir` and
+`--fuse-port` for fuse, or an existing server with `--url` + `--token` / `$POCKETBOMB_URL` + `$POCKETBOMB_TOKEN`: dev versions
+derived from the manifest content, an existing installation is reused with new credentials, and the server keeps running),
+`detonator deploy --url --token`, `detonator install --url --token [--config] [--dotenv]` (the manifest scopes; idempotent;
+without an `install_url` the credentials go to the env file, never the output), `detonator info`.

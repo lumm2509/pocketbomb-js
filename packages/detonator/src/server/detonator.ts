@@ -279,6 +279,26 @@ function decodeSegment(segment: string): Record<string, any> {
 }
 
 /**
+ * Moves the `id_token` of a document request (the session token bounce) to the `Authorization` header.
+ *
+ * Use it after `handleEmbeddedRequest()` and before the router of an SSR app: the framework renders from the
+ * request URL (e.g. the `action` of the forms), and the token must not end up in the HTML.
+ */
+export function withoutIdToken(request: Request): Request {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("id_token");
+  if (!token || (request.method !== "GET" && request.method !== "HEAD")) {
+    return request;
+  }
+
+  url.searchParams.delete("id_token");
+  const headers = new Headers(request.headers);
+  headers.set("authorization", "Bearer " + token);
+
+  return new Request(url, { method: request.method, headers });
+}
+
+/**
  * Returns the unverified header and claims of a JWT (to select the issuer and the key).
  */
 export function decodeJWT(token: string): {

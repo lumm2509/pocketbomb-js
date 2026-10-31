@@ -5,3 +5,4 @@
 export * from "./detonator";
 export * from "../session-storage/index";
 export * from "../index";
+export * from "../scopes";

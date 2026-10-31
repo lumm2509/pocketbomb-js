@@ -1,5 +1,12 @@
 # pocketbomb-fuse
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [ee92060]
+  - pocketbomb-primer@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

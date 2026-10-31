@@ -1,6 +1,6 @@
 {
   "name": "pocketbomb-detonator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "PocketBomb Applications framework: install/uninstall notifications (JWKS), managed webhooks (HMAC), embedded extensions (session tokens, online staff sessions), the app proxy, offline admin clients, session storages, React bindings and the detonator CLI.",
   "license": "MIT",
   "repository": {

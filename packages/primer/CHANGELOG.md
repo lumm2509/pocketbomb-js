@@ -1,5 +1,11 @@
 # pocketbomb-primer
 
+## 0.3.0
+
+### Minor Changes
+
+- ee92060: `pocketbomb-primer/internal`: `DashboardClient.graphqlSchema` with typed `get()`, `plan()` and `apply()` of the GraphQL schema editor API.
+
 ## 0.2.0
 
 ### Minor Changes

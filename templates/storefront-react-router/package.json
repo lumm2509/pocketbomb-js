@@ -9,7 +9,7 @@
     "build": "react-router build",
     "start": "NODE_ENV=production node server.ts",
     "codegen": "dynamite codegen --fuse --seed ./fuse.seed.ts",
-    "typecheck": "react-router typegen && tsc --noEmit",
+    "typecheck": "react-router typegen && tsc --noEmit && dynamite check",
     "test:e2e": "node tests/smoke.ts && node tests/ts-plugin.ts"
   },
   "dependencies": {

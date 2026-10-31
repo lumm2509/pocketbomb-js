@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node --env-file-if-exists=.env server.ts",
     "deploy": "detonator deploy",
     "info": "detonator info",
-    "typecheck": "react-router typegen && tsc --noEmit",
+    "typecheck": "react-router typegen && tsc --noEmit && dynamite check",
     "test:e2e": "node tests/smoke.ts"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "@types/react": "~19.2.0",
     "@types/react-dom": "~19.2.0",
     "playwright": "1.63.0",
+    "pocketbomb-dynamite": "workspace:^",
     "pocketbomb-fuse": "workspace:^",
     "typescript": "catalog:",
     "vite": "catalog:"

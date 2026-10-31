@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequestListener } from "pocketbomb-detonator/adapters/node";
 import { createRequestHandler, type ServerBuild } from "react-router";
-import { ReauthorizeHeader } from "pocketbomb-detonator/server";
+import { ReauthorizeHeader, withoutIdToken } from "pocketbomb-detonator/server";
 import { addDocumentResponseHeaders, handleEmbeddedRequest } from "./app/detonator.server.ts";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -56,13 +56,16 @@ if (production) {
   middleware = vite.middlewares as unknown as Middleware;
 }
 
-const listener = createRequestListener(async (request) => {
+const listener = createRequestListener(async (original) => {
   // the launches (cross-site form POSTs authenticated by the signed single use launch token) and
   // the requests without a session token (session token bounce), before the router
-  const early = await handleEmbeddedRequest(request);
+  const early = await handleEmbeddedRequest(original);
   if (early) {
     return early;
   }
+
+  // the router renders from the URL (e.g. the form actions): the token must not reach the HTML
+  const request = withoutIdToken(original);
 
   const response = await createRequestHandler(
     await getBuild(),

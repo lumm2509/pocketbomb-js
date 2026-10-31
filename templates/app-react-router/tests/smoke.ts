@@ -282,6 +282,7 @@ try {
     !pageHTML.includes(installation.clientSecret) && !pageHTML.includes(installation.webhookSecret),
     "no secret in the app page",
   );
+  assert(!pageHTML.includes("id_token="), "no session token in the document");
   assert((await context.cookies(appUrl)).length === 0, "no app cookies");
   const onlineSession = await storage.loadSession(
     issuer +

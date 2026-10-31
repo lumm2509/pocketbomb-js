@@ -355,6 +355,9 @@ importers:
       playwright:
         specifier: 1.63.0
         version: 1.63.0
+      pocketbomb-dynamite:
+        specifier: workspace:^
+        version: link:../../packages/dynamite
       pocketbomb-fuse:
         specifier: workspace:^
         version: link:../../packages/fuse

@@ -9,6 +9,7 @@ export * from "./applications";
 export * from "./backups";
 export * from "./collections";
 export * from "./crons";
+export * from "./graphql-schema";
 export * from "./llm";
 export * from "./logs";
 export * from "./oauth2-clients";

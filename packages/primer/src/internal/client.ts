@@ -11,6 +11,7 @@ import { ApplicationService } from "./applications";
 import { BackupService } from "./backups";
 import { CollectionService } from "./collections";
 import { CronService } from "./crons";
+import { GraphQLSchemaService } from "./graphql-schema";
 import { LLMService } from "./llm";
 import { LogService } from "./logs";
 import { OAuth2ClientService } from "./oauth2-clients";
@@ -51,11 +52,14 @@ export class DashboardClient extends Client {
   readonly applications: ApplicationService;
   /** The staff **auth sessions** internal API. */
   readonly sessions: SessionService;
+  /** The **GraphQL schema editor** API. */
+  readonly graphqlSchema: GraphQLSchemaService;
 
   constructor(baseURL = "/", options: ClientOptions = {}) {
     super(baseURL, options);
 
     this.settings = new SettingsService(this);
+    this.graphqlSchema = new GraphQLSchemaService(this);
     this.collections = new CollectionService(this);
     this.logs = new LogService(this);
     this.backups = new BackupService(this);
